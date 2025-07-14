@@ -1,0 +1,2 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"/home/arthur/GitRepos/alevel-asteroids/Content/cross.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/cross.xnb","TextureProcessor","Texture2DContent",100,149,0.1070624
