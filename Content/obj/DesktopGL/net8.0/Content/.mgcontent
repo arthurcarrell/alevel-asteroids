@@ -4,8 +4,8 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>/home/arthur/GitRepos/alevel-asteroids/Content/cross.png</File>
-    <File>/home/arthur/GitRepos/alevel-asteroids/Content/pixel.png</File>
+    <File>C:/Users/arthu/alevel-asteroids/Content/cross.png</File>
+    <File>C:/Users/arthu/alevel-asteroids/Content/pixel.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

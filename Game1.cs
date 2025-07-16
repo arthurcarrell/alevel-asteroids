@@ -10,11 +10,23 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
+    // textures
+    Texture2D cross;
+    Texture2D pixel;
+
+    public const int WINDOW_WIDTH = 640;
+    public const int WINDOW_HEIGHT = 480;
+
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
+
+        // change the window size to the set one.
+        _graphics.PreferredBackBufferWidth = WINDOW_WIDTH;
+        _graphics.PreferredBackBufferHeight = WINDOW_HEIGHT;
+        _graphics.ApplyChanges();
     }
 
     protected override void Initialize()
@@ -28,12 +40,14 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        Texture2D pixel = Content.Load<Texture2D>("pixel");
-        Texture2D cross = Content.Load<Texture2D>("cross");
+        pixel = Content.Load<Texture2D>("pixel");
+        cross = Content.Load<Texture2D>("cross");
         // TODO: use this.Content to load your game content here
-        Meteor meteorTest = new Meteor(pixel, cross, new Vector2(200,200));
-        meteorTest.scale = 1;
-        EntityManager.entities.Add(meteorTest);
+        for (int i = 0; i < 100; i++)
+        {
+            Meteor meteor = new Meteor(pixel, cross, new Vector2(200,200));
+            EntityManager.entities.Add(meteor);
+        }
     }
 
     protected override void Update(GameTime gameTime)
@@ -67,6 +81,7 @@ public class Game1 : Game
         // TODO: Add your drawing code here
         _spriteBatch.Begin();
         DrawEntities(_spriteBatch);
+        
         _spriteBatch.End();
 
         base.Draw(gameTime);

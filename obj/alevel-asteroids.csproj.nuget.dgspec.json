@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/home/arthur/GitRepos/alevel-asteroids/alevel-asteroids.csproj": {}
+    "C:\\Users\\arthu\\alevel-asteroids\\alevel-asteroids.csproj": {}
   },
   "projects": {
-    "/home/arthur/GitRepos/alevel-asteroids/alevel-asteroids.csproj": {
+    "C:\\Users\\arthu\\alevel-asteroids\\alevel-asteroids.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/arthur/GitRepos/alevel-asteroids/alevel-asteroids.csproj",
+        "projectUniqueName": "C:\\Users\\arthu\\alevel-asteroids\\alevel-asteroids.csproj",
         "projectName": "alevel-asteroids",
-        "projectPath": "/home/arthur/GitRepos/alevel-asteroids/alevel-asteroids.csproj",
-        "packagesPath": "/home/arthur/.nuget/packages/",
-        "outputPath": "/home/arthur/GitRepos/alevel-asteroids/obj/",
+        "projectPath": "C:\\Users\\arthu\\alevel-asteroids\\alevel-asteroids.csproj",
+        "packagesPath": "C:\\Users\\arthu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\arthu\\alevel-asteroids\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/arthur/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\arthu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,7 +40,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -67,15 +69,19 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.15, 8.0.15]"
+              "version": "[8.0.18, 8.0.18]"
             },
             {
-              "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[8.0.15, 8.0.15]"
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.18, 8.0.18]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.15, 8.0.15]"
+              "version": "[8.0.18, 8.0.18]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.18, 8.0.18]"
             }
           ],
           "frameworkReferences": {
@@ -83,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.105/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
