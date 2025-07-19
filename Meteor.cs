@@ -6,26 +6,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace alevel_asteroids;
 
-public class Meteor : Entity
+public class Meteor : ColliderEntity
 {
 
     private List<Vector2> points = new List<Vector2>();
-    private Texture2D crossTexture;
 
     private int speed;
-    private const int teleport_border = 50;
-    public Meteor(Texture2D setTexture, Texture2D setCrossTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setPosition, setRotation, setScale)
+    
+    public Meteor(Texture2D setTexture, Texture2D setCrossTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setCrossTexture, setPosition, setRotation, setScale)
     {
-        crossTexture = setCrossTexture;
-    }
-
-    private Vector2 Vec2Forward(float direction, float distance)
-    {
-        Vector2 output;
-        output.X = (float)Math.Cos(direction) * distance;
-        output.Y = (float)Math.Sin(direction) * distance;
-
-        return output;
     }
 
     private void CreatePoints(int amount, int minDistance, int maxDistance)
@@ -45,14 +34,6 @@ public class Meteor : Entity
             offset.Y = (float)Math.Sin(curRotation) * distance;
 
             points.Add(offset);
-        }
-    }
-
-    private void RenderPoints(SpriteBatch spriteBatch)
-    {
-        foreach (Vector2 point in points)
-        {
-            spriteBatch.Draw(crossTexture, position + point, null, Color.White, rotation, new Vector2(texture.Height / 2, texture.Width / 2), scale, SpriteEffects.None, layer);
         }
     }
 
@@ -86,7 +67,12 @@ public class Meteor : Entity
     {
         CreatePoints(5, 5, 50);
 
+        // feed points to the hitbox and enable it
+        SetPoints(points);
+        shouldCollide = true;
+
         Random rnd = new Random();
+        int teleport_border = Game1.TELEPORT_BORDER;
 
         // random stats
         speed = rnd.Next(30, 150);
@@ -107,18 +93,16 @@ public class Meteor : Entity
 
     public override void Render(SpriteBatch spriteBatch)
     {
-        // debug utility, this should prob be hidden when done.
-        //RenderPoints(spriteBatch);
-
         // draw lines
         RenderLines(spriteBatch);
+        
+        // debug utility, should be hidden when done - shows points on the hitbox
+        RenderPoints(spriteBatch);
     }
 
     public override void Update(GameTime gameTime)
     {
-        // how far outside of the game border does this need to be before it loops around
-        // the meteor should be completely out of the screen so it looks like it seamlessly loops.
-        
+        int teleport_border = Game1.TELEPORT_BORDER;
 
         float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
         position -= Vec2Forward(rotation, 50 * delta);

@@ -33,10 +33,20 @@ public abstract class Entity
     public virtual void Update(GameTime gameTime) {
         // Run each frame
     }
+    
+    protected Vector2 Vec2Forward(float direction, float distance)
+    {
+        Vector2 output;
+        output.X = (float)Math.Cos(direction) * distance;
+        output.Y = (float)Math.Sin(direction) * distance;
+
+        return output;
+    }
 
 
     /* GETTERS */
-    public Texture2D GetTexture2D() {
+    public Texture2D GetTexture2D()
+    {
         return texture;
     }
 
