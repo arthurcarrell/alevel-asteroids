@@ -1,28 +1,49 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace alevel_asteroids;
 
-public class Player : Entity
+public class Player : ColliderEntity
 {
 
     int speed = 100;
-    public Player(Texture2D setTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setPosition, setRotation, setScale)
+
+    List<Vector2> points = new List<Vector2>() { new Vector2(-8,-8), new Vector2(8,-8), new Vector2(-8,8), new Vector2(8,8)};
+    public Player(Texture2D setTexture, Texture2D setCrossTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setCrossTexture, setPosition, setRotation, setScale)
     {
+    }
+
+    protected override void Init()
+    {
+        SetPoints(points);
+        shouldCollide = true;
+        base.Init();
+    }
+
+    public override void Render(SpriteBatch spriteBatch)
+    {
+        base.Render(spriteBatch);
+        // debug utility, should be hidden when done - shows points on the hitbox
+        RenderPoints(spriteBatch, isColliding);
     }
 
     public override void Update(GameTime gameTime)
     {
-        
+        // collider stuff
+        isColliding = GetFirstCollider() != null;
+
+
         int teleport_border = 20;
         float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
         if (Keyboard.GetState().IsKeyDown(Keys.W))
         {
             position.Y -= speed * delta;
-        } else if (Keyboard.GetState().IsKeyDown(Keys.S))
+        }
+        else if (Keyboard.GetState().IsKeyDown(Keys.S))
         {
             position.Y += speed * delta;
         }
@@ -30,7 +51,8 @@ public class Player : Entity
         if (Keyboard.GetState().IsKeyDown(Keys.A))
         {
             position.X -= speed * delta;
-        } else if (Keyboard.GetState().IsKeyDown(Keys.D))
+        }
+        else if (Keyboard.GetState().IsKeyDown(Keys.D))
         {
             position.X += speed * delta;
         }

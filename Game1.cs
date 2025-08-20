@@ -51,13 +51,13 @@ public class Game1 : Game
         ship = Content.Load<Texture2D>("ship");
 
         // TODO: use this.Content to load your game content here
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 10; i++)
         {
             Meteor meteor = new Meteor(pixel, cross, new Vector2(200, 200));
             EntityManager.entities.Add(meteor);
         }
 
-        Player player = new Player(ship, new Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
+        Player player = new Player(ship, cross, new Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
         EntityManager.entities.Add(player);
     }
 

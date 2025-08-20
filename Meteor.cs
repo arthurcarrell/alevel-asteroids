@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -97,11 +96,15 @@ public class Meteor : ColliderEntity
         RenderLines(spriteBatch);
         
         // debug utility, should be hidden when done - shows points on the hitbox
-        RenderPoints(spriteBatch);
+        RenderPoints(spriteBatch, isColliding);
     }
 
     public override void Update(GameTime gameTime)
     {
+
+        // collision stuff
+        isColliding = GetFirstCollider() != null;
+
         int teleport_border = Game1.TELEPORT_BORDER;
 
         float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
