@@ -9,20 +9,33 @@ public class Meteor : LivingEntity
 {
 
     private List<Vector2> points = new List<Vector2>();
+    private int meteorSize;
+    private Texture2D pixel;
+    private Texture2D cross;
 
     private int speed;
 
-    public Meteor(Texture2D setTexture, Texture2D setCrossTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setCrossTexture, setPosition, setRotation, setScale)
+    public Meteor(Texture2D setSpriteSheet, Texture2D setTexture, Texture2D setCrossTexture, Texture2D setBulletTexture, Vector2 setPosition, int setSize = 1, float setRotation = 0, float setScale = 1) : base(setSpriteSheet, setTexture, setCrossTexture, setBulletTexture, setPosition, setRotation, setScale)
     {
         // set stats
-        maxHealth = 100;
+        meteorSize = setSize;
+        maxHealth = 50 * meteorSize;
         health = maxHealth;
+        experienceValue = 10 * meteorSize;
+
+        pixel = setTexture;
+        cross = setCrossTexture;
+
+        Console.WriteLine(meteorSize);
+        int renderSize = 20 + (meteorSize * 20);
+
+        CreatePoints(Math.Max(5,meteorSize*2), renderSize/12, renderSize);
     }
 
     private void CreatePoints(int amount, int minDistance, int maxDistance)
     {
         Random random = new Random();
-        int rotationOffset = 30;
+        int rotationOffset = 360/amount - 2;
         int curRotation = 0;
         for (int i = 0; i < amount; i++)
         {
@@ -67,30 +80,16 @@ public class Meteor : LivingEntity
 
     protected override void Init()
     {
-        CreatePoints(5, 5, 50);
+        Random random = new Random();
 
         // feed points to the hitbox and enable it
         SetPoints(points);
         shouldCollide = true;
 
         Random rnd = new Random();
-        int teleport_border = Game1.TELEPORT_BORDER;
-
         // random stats
         speed = rnd.Next(30, 150);
         rotation = 6.283185f * (float)rnd.NextDouble();
-
-        // spawn point
-        position.Y = rnd.Next(0, Game1.WINDOW_HEIGHT);
-
-        if (rnd.Next(0, 2) == 1)
-        {
-            position.X = 0 - teleport_border;
-        }
-        else
-        {
-            position.X = Game1.WINDOW_WIDTH + teleport_border;
-        }
     }
 
     public override void Render(SpriteBatch spriteBatch)
@@ -100,6 +99,16 @@ public class Meteor : LivingEntity
         
         // debug utility, should be hidden when done - shows points on the hitbox
         RenderPoints(spriteBatch, isColliding);
+    }
+
+    public override void OnDeath(Damage damage)
+    {
+        if (meteorSize > 1)
+        {
+            EntityManager.entities.Add(new Meteor(spriteSheet, pixel, cross, bulletTexture, position, meteorSize / 2));
+            EntityManager.entities.Add(new Meteor(spriteSheet, pixel, cross, bulletTexture, position, meteorSize / 2));
+        }
+        base.OnDeath(damage);
     }
 
     public override void Update(GameTime gameTime)
@@ -137,12 +146,6 @@ public class Meteor : LivingEntity
         if (position.Y < -teleport_border)
         {
             position.Y = Game1.WINDOW_HEIGHT + teleport_border;
-        }
-
-        // check if at 0 health
-        if (health <= 0)
-        {
-            Kill();
         }
     }
 }

@@ -11,31 +11,38 @@ public class Player : LivingEntity
 
     // === STATS ===
     private int speed = 100;
+    private int experience = 0;
+    private int level = 1;
+    private int requiredExperience = 100;
 
     // === COOLDOWNS ===
     private float invincibilityFrames = 0;
     private float shootCooldown = 0;
-    
+
 
     private int modifications;
 
     // === TEXTURES ===
-    private Texture2D bulletTexture;
     private Texture2D crossTexture;
-    List<Vector2> points = new List<Vector2>() { new Vector2(-8,-8), new Vector2(8,-8), new Vector2(-8,8), new Vector2(8,8), new Vector2(0,0)};
-    public Player(Texture2D setTexture, Texture2D setCrossTexture, Texture2D setBulletTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setCrossTexture, setPosition, setRotation, setScale)
+
+    private Texture2D spriteSheet;
+    List<Vector2> points = new List<Vector2>() { new Vector2(-8, -8), new Vector2(8, -8), new Vector2(-8, 8), new Vector2(8, 8), new Vector2(0, 0) };
+    public Player(Texture2D setSpriteSheet, Texture2D setTexture, Texture2D setCrossTexture, Texture2D setBulletTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setSpriteSheet, setTexture, setCrossTexture, setBulletTexture, setPosition, setRotation, setScale)
     {
-        bulletTexture = setBulletTexture;
         crossTexture = setCrossTexture;
+        spriteSheet = setSpriteSheet;
 
         // set stats
         maxHealth = 200;
         health = maxHealth;
         damage = 20;
+        critChance = 1;
     }
 
     // getters
     public int GetModifications() => modifications;
+    public int GetLevel() => level;
+    public float GetExpPercent() => (float)experience / (float)requiredExperience;
 
     protected override void Init()
     {
@@ -81,7 +88,7 @@ public class Player : LivingEntity
         if (Keyboard.GetState().IsKeyDown(Keys.Space) && shootCooldown <= 0)
         {
             shootCooldown = 500;
-            EntityManager.entities.Add(new Bullet(bulletTexture, crossTexture, position + Vec2Forward(rotation, 20), damage, rotation));
+            EntityManager.entities.Add(new Bullet(spriteSheet, bulletTexture, crossTexture, position + Vec2Forward(rotation, 20), this, rotation));
         }
         if (shootCooldown > 0)
         {
@@ -138,6 +145,24 @@ public class Player : LivingEntity
         if (position.Y < -teleport_border)
         {
             position.Y = Game1.WINDOW_HEIGHT + teleport_border;
+        }
+    }
+
+    public void AddExperience(int amount)
+    {
+        experience += amount;
+        DoLevelUpCheck();
+    }
+
+    private void DoLevelUpCheck()
+    {
+        while (experience > requiredExperience)
+        {
+            experience -= requiredExperience;
+            requiredExperience = (int)(requiredExperience * 1.5);
+            level++;
+            damage = (int)(damage * 1.2);
+            maxHealth = (int)(maxHealth * 1.2);
         }
     }
 }

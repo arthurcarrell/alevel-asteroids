@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -24,6 +25,7 @@ class HUD : Entity
         int maxHealth = player.GetMaxHealth();
         int healthPercent = (int)((float)health / (float)maxHealth * 100);
         int modifications = player.GetModifications();
+        int level = player.GetLevel();
 
         // calculate colour of health
         Color healthColor;
@@ -33,10 +35,18 @@ class HUD : Entity
         else if (healthPercent > 0) { healthColor = Color.Red; }
         else { healthColor = Color.Gray; }
 
+        string expBar = "";
+        for (int i = 0; i < Math.Round(player.GetExpPercent() * 10); i++)
+        {
+            expBar += '█';
+        }
+
         Text text = new Text("all systems nominal\n", Color.Lime);
         text.Add($"core: {health}/{maxHealth} ({healthPercent}%)\n", healthColor);
-        text.Add($"modifications: {modifications}+2", Color.Lime);
-        TextDrawer.DrawText(spriteBatch, text, new Vector2(0, 400), spriteFont, 1.2f);
+        text.Add($"modifications: {modifications}\n", Color.Lime);
+        text.Add($"level: {level}\n", Color.Lime);
+        text.Add($"exp: {expBar}\n", Color.Lime);
+        TextDrawer.DrawText(spriteBatch, text, new Vector2(0, 410), spriteFont, 1.2f);
     }
 
     public override void Update(GameTime gameTime)

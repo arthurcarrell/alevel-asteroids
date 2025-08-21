@@ -59,13 +59,27 @@ public class Game1 : Game
 
 
 
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 1; i++)
         {
-            Meteor meteor = new Meteor(pixel, cross, new Vector2(200, 200));
+            Meteor meteor = new Meteor(galaticSpaceFont, pixel, cross, bullet, new Vector2(200, 200), 4);
+
+            Random rnd = new Random();
+            // spawn point
+            meteor.position.Y = rnd.Next(0, Game1.WINDOW_HEIGHT);
+
+            if (rnd.Next(0, 2) == 1)
+            {
+                meteor.position.X = 0 - TELEPORT_BORDER;
+            }
+            else
+            {
+                meteor.position.X = WINDOW_WIDTH + TELEPORT_BORDER;
+            }
+
             EntityManager.entities.Add(meteor);
         }
 
-        Player player = new Player(ship, cross, bullet, new Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
+        Player player = new Player(galaticSpaceFont, ship, cross, bullet, new Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
         EntityManager.entities.Add(player);
 
 
