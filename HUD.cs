@@ -10,10 +10,9 @@ class HUD : Entity
 {
 
     private float fps = 0;
-    private Texture2D spriteFont;
-    public HUD(Texture2D font, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(null, setPosition, setRotation, setScale)
+    private Texture2D spriteFont = Textures.galaticSpaceFont;
+    public HUD(Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(null, setPosition, setRotation, setScale)
     {
-        spriteFont = font;
     }
 
     public override void Render(SpriteBatch spriteBatch)

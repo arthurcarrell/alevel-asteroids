@@ -17,7 +17,7 @@ public class Game1 : Game
     public Texture2D pixel;
     Texture2D ship;
     Texture2D galaticSpaceFont;
-    Texture2D bullet;
+    Texture2D bullet; 
 
     public const int WINDOW_WIDTH = 640;
     public const int WINDOW_HEIGHT = 480;
@@ -55,17 +55,18 @@ public class Game1 : Game
         bullet = Content.Load<Texture2D>("bullet");
         galaticSpaceFont = Content.Load<Texture2D>("galatic_space_font");
 
-        // TODO: use this.Content to load your game content here
+        // LOAD TEXTURES
+        Textures.Load(this);
 
 
 
         for (int i = 0; i < 1; i++)
         {
-            Meteor meteor = new Meteor(galaticSpaceFont, pixel, cross, bullet, new Vector2(200, 200), 4);
+            Meteor meteor = new Meteor(pixel, new Vector2(200, 200), 4);
 
             Random rnd = new Random();
             // spawn point
-            meteor.position.Y = rnd.Next(0, Game1.WINDOW_HEIGHT);
+            meteor.position.Y = rnd.Next(0, WINDOW_HEIGHT);
 
             if (rnd.Next(0, 2) == 1)
             {
@@ -79,13 +80,13 @@ public class Game1 : Game
             EntityManager.entities.Add(meteor);
         }
 
-        Player player = new Player(galaticSpaceFont, ship, cross, bullet, new Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
+        Player player = new Player(ship, new Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
         EntityManager.entities.Add(player);
 
 
         // UI
         // FPS Counter
-        HUD hud = new HUD(galaticSpaceFont, new Vector2(0, 0));
+        HUD hud = new HUD(new Vector2(0, 0));
         EntityManager.entities.Add(hud);
     }
 

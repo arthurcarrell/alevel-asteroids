@@ -10,21 +10,15 @@ public class Meteor : LivingEntity
 
     private List<Vector2> points = new List<Vector2>();
     private int meteorSize;
-    private Texture2D pixel;
-    private Texture2D cross;
-
     private int speed;
 
-    public Meteor(Texture2D setSpriteSheet, Texture2D setTexture, Texture2D setCrossTexture, Texture2D setBulletTexture, Vector2 setPosition, int setSize = 1, float setRotation = 0, float setScale = 1) : base(setSpriteSheet, setTexture, setCrossTexture, setBulletTexture, setPosition, setRotation, setScale)
+    public Meteor(Texture2D setTexture, Vector2 setPosition, int setSize = 1, float setRotation = 0, float setScale = 1) : base(setTexture, setPosition, setRotation, setScale)
     {
         // set stats
         meteorSize = setSize;
         maxHealth = 50 * meteorSize;
         health = maxHealth;
         experienceValue = 10 * meteorSize;
-
-        pixel = setTexture;
-        cross = setCrossTexture;
 
         Console.WriteLine(meteorSize);
         int renderSize = 20 + (meteorSize * 20);
@@ -105,8 +99,8 @@ public class Meteor : LivingEntity
     {
         if (meteorSize > 1)
         {
-            EntityManager.entities.Add(new Meteor(spriteSheet, pixel, cross, bulletTexture, position, meteorSize / 2));
-            EntityManager.entities.Add(new Meteor(spriteSheet, pixel, cross, bulletTexture, position, meteorSize / 2));
+            EntityManager.entities.Add(new Meteor(texture, position, meteorSize / 2));
+            EntityManager.entities.Add(new Meteor(texture, position, meteorSize / 2));
         }
         base.OnDeath(damage);
     }

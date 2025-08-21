@@ -10,6 +10,6 @@ public class BasicGun : Attachment
 
     public override void OnShoot()
     {
-        EntityManager.entities.Add(new Bullet(owner.GetSpriteSheet(), owner.GetBulletTexture(), owner.g, position + Vec2Forward(rotation, 20), this, rotation));
+        //EntityManager.entities.Add(new Bullet(owner.GetSpriteSheet(), owner.GetBulletTexture(), owner.g, position + Vec2Forward(rotation, 20), this, rotation));
     }
 }

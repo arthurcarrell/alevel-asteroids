@@ -13,13 +13,8 @@ public class LivingEntity : ColliderEntity
     protected int critChance = 0;
     protected int experienceValue = 0;
     protected LivingEntity lastDamager;
-
-    protected Texture2D spriteSheet;
-    protected Texture2D bulletTexture;
-    public LivingEntity(Texture2D setSpriteSheet, Texture2D setTexture, Texture2D setCrossTexture, Texture2D setBulletTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setCrossTexture, setPosition, setRotation, setScale)
+    public LivingEntity(Texture2D setTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setPosition, setRotation, setScale)
     {
-        spriteSheet = setSpriteSheet;
-        bulletTexture = setBulletTexture;
     }
 
     // Getters
@@ -27,8 +22,6 @@ public class LivingEntity : ColliderEntity
     public int GetHealth() => health;
     public int GetDamage() => damage;
     public int GetCritChance() => critChance;
-    public Texture2D GetSpriteSheet() => spriteSheet;
-    public Texture2D GetBulletTexture() => bulletTexture;
 
     // Setters
     public void SetMaxHealth(int value) => maxHealth = value;
@@ -73,7 +66,7 @@ public class LivingEntity : ColliderEntity
 
         if (!keepQuiet)
         {
-            EntityManager.entities.Add(new DamageIndicator(damage, spriteSheet, position));
+            EntityManager.entities.Add(new DamageIndicator(damage, position));
         }
 
         // check for death

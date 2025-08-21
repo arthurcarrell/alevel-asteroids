@@ -8,12 +8,10 @@ class DamageIndicator : Entity
 
     private float damageTime;
     private Damage damage;
-    private Texture2D spriteSheet;
-    public DamageIndicator(Damage setDamage, Texture2D setSpriteSheet, Vector2 setPosition, int setDamageTime = 1000, float setRotation = 0, float setScale = 1) : base(null, setPosition, setRotation, setScale)
+    public DamageIndicator(Damage setDamage, Vector2 setPosition, int setDamageTime = 1000, float setRotation = 0, float setScale = 1) : base(null, setPosition, setRotation, setScale)
     {
         damageTime = setDamageTime;
         damage = setDamage;
-        spriteSheet = setSpriteSheet;
     }
 
     public override void Render(SpriteBatch spriteBatch)
@@ -24,7 +22,7 @@ class DamageIndicator : Entity
             _ => Color.Yellow
         };
 
-        TextDrawer.DrawText(spriteBatch, new Text($"{damage.amount}", damageColor), position, spriteSheet);
+        TextDrawer.DrawText(spriteBatch, new Text($"{damage.amount}", damageColor), position, Textures.galaticSpaceFont);
     }
 
     public override void Update(GameTime gameTime)

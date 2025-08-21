@@ -6,17 +6,12 @@ namespace alevel_asteroids;
 
 public class Bullet : ColliderEntity
 {
-
-    private int speed;
-    private Damage damage;
     private LivingEntity owner;
-    private Texture2D spriteSheet;
     List<Vector2> points = new List<Vector2>() { new Vector2(-2,-2), new Vector2(2,-2), new Vector2(-2,2), new Vector2(2,2)};
 
-    public Bullet(Texture2D setSpriteSheet, Texture2D setTexture, Texture2D setCrossTexture, Vector2 setPosition, LivingEntity setOwner, float setRotation = 0, float setScale = 1) : base(setTexture, setCrossTexture, setPosition, setRotation, setScale)
+    public Bullet(Texture2D setTexture, Vector2 setPosition, LivingEntity setOwner, float setRotation = 0, float setScale = 1) : base(setTexture, setPosition, setRotation, setScale)
     {
         owner = setOwner;
-        spriteSheet = setSpriteSheet;
     }
 
     protected void OnCollision(GameTime gameTime, ColliderEntity collision)

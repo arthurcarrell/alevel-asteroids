@@ -17,10 +17,8 @@ public class ColliderEntity : Entity
     protected bool isColliding;
 
     // textures
-    Texture2D crossTexture;
-    public ColliderEntity(Texture2D setTexture, Texture2D setCrossTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setPosition, setRotation, setScale)
+    public ColliderEntity(Texture2D setTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setPosition, setRotation, setScale)
     {
-        crossTexture = setCrossTexture;
     }
 
     // setters
@@ -34,6 +32,7 @@ public class ColliderEntity : Entity
     {
         // set colour
         Color pointColor = Color.Red;
+        Texture2D crossTexture = Textures.cross;
         
         if (isColliding)
         {

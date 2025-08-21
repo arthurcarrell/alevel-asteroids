@@ -2,6 +2,6 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "C:/Users/arthu/alevel-asteroids/Content/arial.spritefont","C:/Users/arthu/alevel-asteroids/Content/bin/DesktopGL/Content/arial.xnb","FontDescriptionProcessor","SpriteFontContent",2068,21529,0.1719328
 "C:/Users/arthu/alevel-asteroids/Content/bullet.png","C:/Users/arthu/alevel-asteroids/Content/bin/DesktopGL/Content/bullet.xnb","TextureProcessor","Texture2DContent",99,149,0.1147231
 "C:/Users/arthu/alevel-asteroids/Content/cross.png","C:/Users/arthu/alevel-asteroids/Content/bin/DesktopGL/Content/cross.xnb","TextureProcessor","Texture2DContent",100,149,0.6594503
-"C:/Users/arthu/alevel-asteroids/Content/galatic_space_font.png","C:/Users/arthu/alevel-asteroids/Content/bin/DesktopGL/Content/galatic_space_font.xnb","TextureProcessor","Texture2DContent",563,13653,0.1018817
+"C:/Users/arthu/alevel-asteroids/Content/galatic_space_font.png","C:/Users/arthu/alevel-asteroids/Content/bin/DesktopGL/Content/galatic_space_font.xnb","TextureProcessor","Texture2DContent",568,13941,0.1093614
 "C:/Users/arthu/alevel-asteroids/Content/pixel.png","C:/Users/arthu/alevel-asteroids/Content/bin/DesktopGL/Content/pixel.xnb","TextureProcessor","Texture2DContent",83,89,0.0034401
 "C:/Users/arthu/alevel-asteroids/Content/ship.png","C:/Users/arthu/alevel-asteroids/Content/bin/DesktopGL/Content/ship.xnb","TextureProcessor","Texture2DContent",125,1109,0.4144226

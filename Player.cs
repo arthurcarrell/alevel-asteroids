@@ -23,14 +23,9 @@ public class Player : LivingEntity
     private int modifications;
 
     // === TEXTURES ===
-    private Texture2D crossTexture;
-
-    private Texture2D spriteSheet;
     List<Vector2> points = new List<Vector2>() { new Vector2(-8, -8), new Vector2(8, -8), new Vector2(-8, 8), new Vector2(8, 8), new Vector2(0, 0) };
-    public Player(Texture2D setSpriteSheet, Texture2D setTexture, Texture2D setCrossTexture, Texture2D setBulletTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setSpriteSheet, setTexture, setCrossTexture, setBulletTexture, setPosition, setRotation, setScale)
+    public Player(Texture2D setTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setPosition, setRotation, setScale)
     {
-        crossTexture = setCrossTexture;
-        spriteSheet = setSpriteSheet;
 
         // set stats
         maxHealth = 200;
@@ -88,7 +83,7 @@ public class Player : LivingEntity
         if (Keyboard.GetState().IsKeyDown(Keys.Space) && shootCooldown <= 0)
         {
             shootCooldown = 500;
-            EntityManager.entities.Add(new Bullet(spriteSheet, bulletTexture, crossTexture, position + Vec2Forward(rotation, 20), this, rotation));
+            EntityManager.entities.Add(new Bullet(Textures.bullet, position + Vec2Forward(rotation, 20), this, rotation));
         }
         if (shootCooldown > 0)
         {
