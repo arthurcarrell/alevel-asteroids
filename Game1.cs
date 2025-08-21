@@ -17,7 +17,7 @@ public class Game1 : Game
     public Texture2D pixel;
     Texture2D ship;
     Texture2D galaticSpaceFont;
-    SpriteFont font;
+    Texture2D bullet;
 
     public const int WINDOW_WIDTH = 640;
     public const int WINDOW_HEIGHT = 480;
@@ -52,7 +52,7 @@ public class Game1 : Game
         pixel = Content.Load<Texture2D>("pixel");
         cross = Content.Load<Texture2D>("cross");
         ship = Content.Load<Texture2D>("ship");
-        font = Content.Load<SpriteFont>("arial");
+        bullet = Content.Load<Texture2D>("bullet");
         galaticSpaceFont = Content.Load<Texture2D>("galatic_space_font");
 
         // TODO: use this.Content to load your game content here
@@ -65,7 +65,7 @@ public class Game1 : Game
             EntityManager.entities.Add(meteor);
         }
 
-        Player player = new Player(ship, cross, new Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
+        Player player = new Player(ship, cross, bullet, new Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
         EntityManager.entities.Add(player);
 
 

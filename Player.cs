@@ -6,28 +6,35 @@ using Microsoft.Xna.Framework.Input;
 
 namespace alevel_asteroids;
 
-public class Player : ColliderEntity
+public class Player : LivingEntity
 {
 
+    // === STATS ===
     private int speed = 100;
 
-
-    private int maxHealth = 200;
-    private int health = 200;
-
-    // hit cooldown
+    // === COOLDOWNS ===
     private float invincibilityFrames = 0;
+    private float shootCooldown = 0;
     
 
     private int modifications;
+
+    // === TEXTURES ===
+    private Texture2D bulletTexture;
+    private Texture2D crossTexture;
     List<Vector2> points = new List<Vector2>() { new Vector2(-8,-8), new Vector2(8,-8), new Vector2(-8,8), new Vector2(8,8)};
-    public Player(Texture2D setTexture, Texture2D setCrossTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setCrossTexture, setPosition, setRotation, setScale)
+    public Player(Texture2D setTexture, Texture2D setCrossTexture, Texture2D setBulletTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setCrossTexture, setPosition, setRotation, setScale)
     {
+        bulletTexture = setBulletTexture;
+        crossTexture = setCrossTexture;
+
+        // set stats
+        maxHealth = 200;
+        health = maxHealth;
+        damage = 20;
     }
 
     // getters
-    public int GetHealth() => health;
-    public int GetMaxHealth() => maxHealth;
     public int GetModifications() => modifications;
 
     protected override void Init()
@@ -49,7 +56,11 @@ public class Player : ColliderEntity
 
     public override void Update(GameTime gameTime)
     {
-        // collider stuff
+        // Delta
+        float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
+        float milisecondDelta = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+        // Collider stuff
         isColliding = GetFirstCollider() != null;
 
         if (isColliding && invincibilityFrames <= 0)
@@ -65,7 +76,19 @@ public class Player : ColliderEntity
 
 
         int teleport_border = 20;
-        float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+        // Shooting
+        if (Keyboard.GetState().IsKeyDown(Keys.Space) && shootCooldown <= 0)
+        {
+            shootCooldown = 500;
+            EntityManager.entities.Add(new Bullet(bulletTexture, crossTexture, position + Vec2Forward(rotation, 10), damage, rotation));
+        }
+        if (shootCooldown > 0)
+        {
+            shootCooldown -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+        }
+
+        // Movement
 
         if (Keyboard.GetState().IsKeyDown(Keys.W))
         {

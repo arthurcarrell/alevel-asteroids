@@ -5,15 +5,18 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace alevel_asteroids;
 
-public class Meteor : ColliderEntity
+public class Meteor : LivingEntity
 {
 
     private List<Vector2> points = new List<Vector2>();
 
     private int speed;
-    
+
     public Meteor(Texture2D setTexture, Texture2D setCrossTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setCrossTexture, setPosition, setRotation, setScale)
     {
+        // set stats
+        maxHealth = 100;
+        health = maxHealth;
     }
 
     private void CreatePoints(int amount, int minDistance, int maxDistance)
@@ -134,6 +137,12 @@ public class Meteor : ColliderEntity
         if (position.Y < -teleport_border)
         {
             position.Y = Game1.WINDOW_HEIGHT + teleport_border;
+        }
+
+        // check if at 0 health
+        if (health <= 0)
+        {
+            Kill();
         }
     }
 }

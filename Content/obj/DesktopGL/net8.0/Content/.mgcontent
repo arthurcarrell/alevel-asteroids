@@ -9,8 +9,10 @@
     <File>C:/Users/arthu/alevel-asteroids/Content/pixel.png</File>
     <File>C:/Users/arthu/alevel-asteroids/Content/ship.png</File>
     <File>C:/Users/arthu/alevel-asteroids/Content/galatic_space_font.png</File>
+    <File>C:/Users/arthu/alevel-asteroids/Content/bullet.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
