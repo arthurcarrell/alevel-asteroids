@@ -4,11 +4,15 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/arthu/alevel-asteroids/Content/arial.spritefont</File>
     <File>C:/Users/arthu/alevel-asteroids/Content/cross.png</File>
     <File>C:/Users/arthu/alevel-asteroids/Content/pixel.png</File>
     <File>C:/Users/arthu/alevel-asteroids/Content/ship.png</File>
+    <File>C:/Users/arthu/alevel-asteroids/Content/galatic_space_font.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

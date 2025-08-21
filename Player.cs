@@ -9,18 +9,35 @@ namespace alevel_asteroids;
 public class Player : ColliderEntity
 {
 
-    int speed = 100;
+    private int speed = 100;
 
+
+    private int maxHealth = 200;
+    private int health = 200;
+
+    // hit cooldown
+    private float invincibilityFrames = 0;
+    
+
+    private int modifications;
     List<Vector2> points = new List<Vector2>() { new Vector2(-8,-8), new Vector2(8,-8), new Vector2(-8,8), new Vector2(8,8)};
     public Player(Texture2D setTexture, Texture2D setCrossTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setCrossTexture, setPosition, setRotation, setScale)
     {
     }
+
+    // getters
+    public int GetHealth() => health;
+    public int GetMaxHealth() => maxHealth;
+    public int GetModifications() => modifications;
 
     protected override void Init()
     {
         SetPoints(points);
         shouldCollide = true;
         base.Init();
+
+        // give the entitymanager us, so that its easier to access everywhere else.
+        EntityManager.player = this;
     }
 
     public override void Render(SpriteBatch spriteBatch)
@@ -34,6 +51,17 @@ public class Player : ColliderEntity
     {
         // collider stuff
         isColliding = GetFirstCollider() != null;
+
+        if (isColliding && invincibilityFrames <= 0)
+        {
+            health -= 10;
+            invincibilityFrames += 1000;
+        }
+
+        if (invincibilityFrames > 0)
+        {
+            invincibilityFrames -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+        }
 
 
         int teleport_border = 20;

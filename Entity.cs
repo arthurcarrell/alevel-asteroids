@@ -24,16 +24,18 @@ public abstract class Entity
     // Coordinate Stuff
     public Vector2 position;
 
-    
+
     /* MAIN FUNCTIONS */
-    protected virtual void Init() {
+    protected virtual void Init()
+    {
         // Run on Entity creation
     }
 
-    public virtual void Update(GameTime gameTime) {
+    public virtual void Update(GameTime gameTime)
+    {
         // Run each frame
     }
-    
+
     protected Vector2 Vec2Forward(float direction, float distance)
     {
         Vector2 output;
@@ -51,15 +53,18 @@ public abstract class Entity
     }
 
     // Render, this is run every frame and draws the texture, with the sprite drawn in the center, not in the corner.
-    public virtual void Render(SpriteBatch spriteBatch) {
-        if (shouldRender) {
+    public virtual void Render(SpriteBatch spriteBatch)
+    {
+        if (shouldRender)
+        {
             // render onto the screen
             spriteBatch.Draw(texture, position - new Vector2(texture.Height / 2, texture.Width / 2), null, Color.White, rotation, new Vector2(texture.Height / 2, texture.Width / 2), scale, SpriteEffects.None, layer);
         }
     }
 
     // constructor
-    public Entity(Texture2D setTexture, Vector2 setPosition, float setRotation=0, float setScale=1) {
+    public Entity(Texture2D setTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1)
+    {
         texture = setTexture;
         position = setPosition;
         rotation = setRotation;
@@ -67,5 +72,10 @@ public abstract class Entity
 
         // Run init
         Init();
+    }
+
+    public void Kill()
+    {
+        EntityManager.entities.Remove(this);
     }
 }

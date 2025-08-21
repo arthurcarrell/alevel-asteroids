@@ -4,6 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/arthu/alevel-asteroids/Content/arial.spritefont</File>
     <File>/home/arthur/GitRepos/alevel-asteroids/Content/cross.png</File>
   </SourceFiles>
   <DestFiles>

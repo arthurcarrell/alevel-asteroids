@@ -1,2 +1,3 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "/home/arthur/GitRepos/alevel-asteroids/Content/cross.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/cross.xnb","TextureProcessor","Texture2DContent",100,149,0.1070624
+"C:/Users/arthu/alevel-asteroids/Content/arial.spritefont","C:/Users/arthu/alevel-asteroids/Content/bin/DesktopGL/arial.xnb","FontDescriptionProcessor","SpriteFontContent",2068,21529,0.6211569

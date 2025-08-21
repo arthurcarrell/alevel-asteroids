@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -13,8 +15,9 @@ public class Game1 : Game
     // textures
     Texture2D cross;
     public Texture2D pixel;
-
     Texture2D ship;
+    Texture2D galaticSpaceFont;
+    SpriteFont font;
 
     public const int WINDOW_WIDTH = 640;
     public const int WINDOW_HEIGHT = 480;
@@ -49,9 +52,14 @@ public class Game1 : Game
         pixel = Content.Load<Texture2D>("pixel");
         cross = Content.Load<Texture2D>("cross");
         ship = Content.Load<Texture2D>("ship");
+        font = Content.Load<SpriteFont>("arial");
+        galaticSpaceFont = Content.Load<Texture2D>("galatic_space_font");
 
         // TODO: use this.Content to load your game content here
-        for (int i = 0; i < 10; i++)
+
+
+
+        for (int i = 0; i < 30; i++)
         {
             Meteor meteor = new Meteor(pixel, cross, new Vector2(200, 200));
             EntityManager.entities.Add(meteor);
@@ -59,6 +67,12 @@ public class Game1 : Game
 
         Player player = new Player(ship, cross, new Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
         EntityManager.entities.Add(player);
+
+
+        // UI
+        // FPS Counter
+        HUD hud = new HUD(galaticSpaceFont, new Vector2(0, 0));
+        EntityManager.entities.Add(hud);
     }
 
     protected override void Update(GameTime gameTime)

@@ -66,3 +66,5 @@ C:\Users\arthu\alevel-asteroids\obj\Debug\net8.0\alevel-asteroids.pdb
 C:\Users\arthu\alevel-asteroids\obj\Debug\net8.0\alevel-asteroids.genruntimeconfig.cache
 C:\Users\arthu\alevel-asteroids\obj\Debug\net8.0\ref\alevel-asteroids.dll
 C:\Users\arthu\alevel-asteroids\bin\Debug\net8.0\Content\ship.xnb
+C:\Users\arthu\alevel-asteroids\bin\Debug\net8.0\Content\arial.xnb
+C:\Users\arthu\alevel-asteroids\bin\Debug\net8.0\Content\galatic_space_font.xnb

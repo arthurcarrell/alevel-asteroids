@@ -108,7 +108,7 @@ public class Meteor : ColliderEntity
         int teleport_border = Game1.TELEPORT_BORDER;
 
         float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
-        position -= Vec2Forward(rotation, 50 * delta);
+        position += Vec2Forward(rotation, 50 * delta);
 
         // LOOPS
 
@@ -130,7 +130,7 @@ public class Meteor : ColliderEntity
             position.Y = -teleport_border;
         }
 
-        // left -> right
+        // bottom -> top
         if (position.Y < -teleport_border)
         {
             position.Y = Game1.WINDOW_HEIGHT + teleport_border;
