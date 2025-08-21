@@ -58,7 +58,7 @@ public abstract class Entity
         if (shouldRender)
         {
             // render onto the screen
-            spriteBatch.Draw(texture, position - new Vector2(texture.Height / 2, texture.Width / 2), null, Color.White, rotation, new Vector2(texture.Height / 2, texture.Width / 2), scale, SpriteEffects.None, layer);
+            spriteBatch.Draw(texture, position, null, Color.White, rotation, new Vector2(texture.Width / 2f, texture.Height / 2f), scale, SpriteEffects.None, layer);
         }
     }
 

@@ -22,7 +22,7 @@ public class Player : LivingEntity
     // === TEXTURES ===
     private Texture2D bulletTexture;
     private Texture2D crossTexture;
-    List<Vector2> points = new List<Vector2>() { new Vector2(-8,-8), new Vector2(8,-8), new Vector2(-8,8), new Vector2(8,8)};
+    List<Vector2> points = new List<Vector2>() { new Vector2(-8,-8), new Vector2(8,-8), new Vector2(-8,8), new Vector2(8,8), new Vector2(0,0)};
     public Player(Texture2D setTexture, Texture2D setCrossTexture, Texture2D setBulletTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setCrossTexture, setPosition, setRotation, setScale)
     {
         bulletTexture = setBulletTexture;
@@ -81,7 +81,7 @@ public class Player : LivingEntity
         if (Keyboard.GetState().IsKeyDown(Keys.Space) && shootCooldown <= 0)
         {
             shootCooldown = 500;
-            EntityManager.entities.Add(new Bullet(bulletTexture, crossTexture, position + Vec2Forward(rotation, 10), damage, rotation));
+            EntityManager.entities.Add(new Bullet(bulletTexture, crossTexture, position + Vec2Forward(rotation, 20), damage, rotation));
         }
         if (shootCooldown > 0)
         {

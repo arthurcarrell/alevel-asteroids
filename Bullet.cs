@@ -25,6 +25,12 @@ public class Bullet : ColliderEntity
         }
     }
 
+    public override void Render(SpriteBatch spriteBatch)
+    {
+        base.Render(spriteBatch);
+        RenderPoints(spriteBatch, isColliding);
+    }
+
     protected override void Init()
     {
         SetPoints(points);
@@ -42,6 +48,37 @@ public class Bullet : ColliderEntity
         if (isColliding)
         {
             OnCollision(gameTime, collision);
+        }
+
+        // move forward
+        float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
+        position += Vec2Forward(rotation, 500 * delta);
+
+
+        // LOOPS
+        int teleport_border = 20;
+        // right -> left
+        if (position.X > Game1.WINDOW_WIDTH + teleport_border)
+        {
+            position.X = -teleport_border;
+        }
+
+        // left -> right
+        if (position.X < -teleport_border)
+        {
+            position.X = Game1.WINDOW_WIDTH + teleport_border;
+        }
+
+        // top -> bottom
+        if (position.Y > Game1.WINDOW_HEIGHT + teleport_border)
+        {
+            position.Y = -teleport_border;
+        }
+
+        // left -> right
+        if (position.Y < -teleport_border)
+        {
+            position.Y = Game1.WINDOW_HEIGHT + teleport_border;
         }
 
     }

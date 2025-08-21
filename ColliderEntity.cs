@@ -34,6 +34,7 @@ public class ColliderEntity : Entity
     {
         // set colour
         Color pointColor = Color.Red;
+        
         if (isColliding)
         {
             pointColor = Color.Green;
@@ -41,7 +42,7 @@ public class ColliderEntity : Entity
 
         foreach (Vector2 point in hitboxPoints)
         {
-            spriteBatch.Draw(crossTexture, position + point + new Vector2(-1, -1), null, pointColor, 0, new Vector2(texture.Height / 2, texture.Width / 2), scale, SpriteEffects.None, layer);
+            spriteBatch.Draw(crossTexture, position + point, null, pointColor, 0, new Vector2(crossTexture.Width / 2f, crossTexture.Height / 2f), scale, SpriteEffects.None, layer);
         }
     }
 
@@ -167,4 +168,6 @@ public class ColliderEntity : Entity
 
         return null;
     }
+
+
 }
