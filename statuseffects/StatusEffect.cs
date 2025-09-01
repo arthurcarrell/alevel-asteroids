@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+
 namespace alevel_asteroids;
 
 public class StatusEffect
@@ -6,14 +8,14 @@ public class StatusEffect
     public float maxTimeLeft = 0;
     public LivingEntity owner;
 
-    public StatusEffect(LivingEntity setOwner, float setMaxTime, float setTimeLeft)
+    public StatusEffect(LivingEntity setOwner, float setMaxTime)
     {
         timeLeft = setMaxTime;
         maxTimeLeft = setMaxTime;
         owner = setOwner;
     }
 
-    public virtual void Tick(LivingEntity entity)
+    public virtual void Tick(LivingEntity entity, GameTime gameTime)
     {
         // supposed to be overriden.
     }
