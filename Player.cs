@@ -31,7 +31,12 @@ public class Player : LivingEntity
         maxHealth = 200;
         health = maxHealth;
         damage = 20;
-        critChance = 1;
+
+        items.Add(Items.Gasoline);
+        items.Add(Items.Gasoline);
+        items.Add(Items.Gasoline);
+        //items.Add(Items.Gasoline);
+        //items.Add(Items.Gasoline);
     }
 
     // getters
@@ -60,8 +65,6 @@ public class Player : LivingEntity
     {
         // Delta
         float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
-        float milisecondDelta = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-
         // Collider stuff
         isColliding = GetFirstCollider() != null;
 
@@ -82,9 +85,10 @@ public class Player : LivingEntity
         // Shooting
         if (Keyboard.GetState().IsKeyDown(Keys.Space) && shootCooldown <= 0)
         {
-            shootCooldown = 500;
             EntityManager.entities.Add(new Bullet(Textures.bullet, position + Vec2Forward(rotation, 20), this, rotation));
+            shootCooldown = 500;
         }
+
         if (shootCooldown > 0)
         {
             shootCooldown -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;

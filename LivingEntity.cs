@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -10,9 +11,11 @@ public class LivingEntity : ColliderEntity
     protected int health = 0;
     protected int maxHealth = 0;
     protected int damage = 0;
-    protected int critChance = 0;
     protected int experienceValue = 0;
     protected LivingEntity lastDamager;
+
+    protected List<Item> items = new List<Item>();
+    protected List<StatusEffect> statusEffects = new List<StatusEffect>();
     public LivingEntity(Texture2D setTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setPosition, setRotation, setScale)
     {
     }
@@ -21,41 +24,55 @@ public class LivingEntity : ColliderEntity
     public int GetMaxHealth() => maxHealth;
     public int GetHealth() => health;
     public int GetDamage() => damage;
-    public int GetCritChance() => critChance;
+    public List<Item> GetItems() => items;
+    public List<StatusEffect> GetStatusEffects() => statusEffects;
 
     // Setters
     public void SetMaxHealth(int value) => maxHealth = value;
     public void SetHealth(int value) => health = value;
     public void SetDamage(int value) => damage = value;
-    public void SetCritChance(int value) => critChance = value;
 
-    public Damage CalculateDamage(LivingEntity source = null)
+    public void TickStatusEffects(GameTime gameTime)
     {
-        Damage endDamage = new Damage();
-
-        // regular base
-        endDamage.amount = damage;
-        endDamage.type = DamageType.NORMAL;
-        if (endDamage.source == null)
+        foreach (StatusEffect statusEffect in statusEffects)
         {
-            endDamage.source = this;
+            statusEffect.timeLeft -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            statusEffect.Tick(this);
+            if (statusEffect.timeLeft == 0)
+            {
+                statusEffects.Remove(statusEffect);
+            }
         }
+    }
 
+    public Damage ProcessDamage(Damage damage)
+    {
         // calculate crit
         Random random = new Random();
-        if (random.Next(1, 100 + 1) <= critChance)
+
+        int targetingScopeCount = damage.source.GetItems().FindAll(item => item == Items.TargettingScope).Count;
+        int gasolineCount = damage.source.GetItems().FindAll(item => item == Items.Gasoline).Count;
+
+        if (Chance.Percentage(targetingScopeCount*0.1f, damage.procChance))
         {
-            endDamage.amount *= 2;
-            endDamage.type = DamageType.CRIT;
+            damage.amount *= 2;
+            damage.type = DamageType.CRIT;
         }
 
-        return endDamage;
+        if (Chance.Percentage(gasolineCount*0.1f, damage.procChance))
+        {
+            statusEffects.Add(new FireStatusEffect(1.5f, damage.source));
+        }
+
+        return damage;
     }
 
     public void DoDamage(Damage damage, bool keepQuiet = false)
     {
         // run custom function
-        damage = OnDamage(damage);
+        // process damage
+        damage = ProcessDamage(damage);
+        //damage = OnDamage(damage);
 
         health -= damage.amount;
 

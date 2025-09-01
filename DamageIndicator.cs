@@ -19,6 +19,7 @@ class DamageIndicator : Entity
         Color damageColor = damage.type switch
         {
             DamageType.CRIT => Color.Red,
+            DamageType.FIRE => Color.Orange,
             _ => Color.Yellow
         };
 

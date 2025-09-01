@@ -35,7 +35,6 @@ public abstract class TextDrawer
 
     private static void DrawCharacter(SpriteBatch spriteBatch, char character, Color color, Texture2D fontSpriteSheet, Vector2 position, float scale)
     {
-        Console.WriteLine("drawing chr");
         char[] availableCharacters = new char[] {
             '0','1','2','3','4','5','6','7','8','9',
             'a','b','c','d','e','f','g','h','i','j',

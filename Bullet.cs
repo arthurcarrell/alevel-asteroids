@@ -18,7 +18,15 @@ public class Bullet : ColliderEntity
     {
         if (collision is LivingEntity livingEntity)
         {
-            livingEntity.DoDamage(owner.CalculateDamage());
+            // create the damage structure
+            Damage damage = new Damage();
+            damage.amount = owner.GetDamage();
+            damage.source = owner;
+            damage.type = DamageType.NORMAL;
+            damage.procChance = 1f;
+
+            // pass it over
+            livingEntity.DoDamage(damage);
         }
         Kill();
     }
