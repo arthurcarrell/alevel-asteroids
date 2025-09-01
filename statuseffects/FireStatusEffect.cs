@@ -10,8 +10,6 @@ public class FireStatusEffect : StatusEffect
 
     public override void Tick(LivingEntity entity, GameTime gameTime)
     {
-        
-
         cooldown -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
         if (cooldown <= 0)
         {

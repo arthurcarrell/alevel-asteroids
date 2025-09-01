@@ -34,7 +34,7 @@ public class Bullet : ColliderEntity
     public override void Render(SpriteBatch spriteBatch)
     {
         base.Render(spriteBatch);
-        RenderPoints(spriteBatch, isColliding);
+        //RenderPoints(spriteBatch, isColliding);
     }
 
     protected override void Init()

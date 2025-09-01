@@ -92,7 +92,7 @@ public class Meteor : LivingEntity
         RenderLines(spriteBatch);
         
         // debug utility, should be hidden when done - shows points on the hitbox
-        RenderPoints(spriteBatch, isColliding);
+        //RenderPoints(spriteBatch, isColliding);
     }
 
     public override void OnDeath(Damage damage)
