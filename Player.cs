@@ -67,6 +67,7 @@ public class Player : LivingEntity
         float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
         // Collider stuff
         isColliding = GetFirstCollider() != null;
+        TickStatusEffects(gameTime);
 
         if (isColliding && invincibilityFrames <= 0)
         {

@@ -110,6 +110,7 @@ public class Meteor : LivingEntity
 
         // collision stuff
         isColliding = GetFirstCollider() != null;
+        TickStatusEffects(gameTime);
 
         int teleport_border = Game1.TELEPORT_BORDER;
 
