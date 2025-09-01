@@ -34,11 +34,12 @@ public class LivingEntity : ColliderEntity
 
     public void TickStatusEffects(GameTime gameTime)
     {
-        foreach (StatusEffect statusEffect in statusEffects)
+        List<StatusEffect> runStatusEffects = new List<StatusEffect>(statusEffects);
+        foreach (StatusEffect statusEffect in runStatusEffects)
         {
-            statusEffect.timeLeft -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            statusEffect.Tick(this);
-            if (statusEffect.timeLeft == 0)
+            statusEffect.timeLeft -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            statusEffect.Tick(this, gameTime);
+            if (statusEffect.timeLeft <= 0)
             {
                 statusEffects.Remove(statusEffect);
             }
@@ -61,7 +62,7 @@ public class LivingEntity : ColliderEntity
 
         if (Chance.Percentage(gasolineCount*0.1f, damage.procChance))
         {
-            statusEffects.Add(new FireStatusEffect(1.5f, damage.source));
+            statusEffects.Add(new FireStatusEffect(5000f, damage.source));
         }
 
         return damage;
