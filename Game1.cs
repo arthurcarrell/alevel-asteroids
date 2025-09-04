@@ -60,9 +60,9 @@ public class Game1 : Game
 
 
 
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 10; i++)
         {
-            Meteor meteor = new Meteor(pixel, new Vector2(200, 200), 4);
+            Meteor meteor = new Meteor(pixel, new Vector2(200, 200), 3);
 
             Random rnd = new Random();
             // spawn point

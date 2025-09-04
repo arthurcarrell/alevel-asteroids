@@ -58,7 +58,7 @@ public class Player : LivingEntity
     {
         base.Render(spriteBatch);
         // debug utility, should be hidden when done - shows points on the hitbox
-        //RenderPoints(spriteBatch, isColliding);
+        RenderPoints(spriteBatch, isColliding);
     }
 
     public override void Update(GameTime gameTime)
