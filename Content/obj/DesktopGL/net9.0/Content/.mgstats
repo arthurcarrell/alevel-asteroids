@@ -1,0 +1,6 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"/home/arthur/GitRepos/alevel-asteroids/Content/bullet.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/bullet.xnb","TextureProcessor","Texture2DContent",99,149,0.0004134
+"/home/arthur/GitRepos/alevel-asteroids/Content/cross.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/cross.xnb","TextureProcessor","Texture2DContent",100,149,0.1122372
+"/home/arthur/GitRepos/alevel-asteroids/Content/galatic_space_font.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/galatic_space_font.xnb","TextureProcessor","Texture2DContent",568,13941,0.0017713
+"/home/arthur/GitRepos/alevel-asteroids/Content/pixel.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/pixel.xnb","TextureProcessor","Texture2DContent",83,89,0.0021341
+"/home/arthur/GitRepos/alevel-asteroids/Content/ship.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/ship.xnb","TextureProcessor","Texture2DContent",125,1109,0.0012612
