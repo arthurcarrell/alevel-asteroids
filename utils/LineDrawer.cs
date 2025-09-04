@@ -16,4 +16,14 @@ public abstract class LineDrawer
         // draw
         spriteBatch.Draw(texture, pointA, null, Color.White, (float)angle, Vector2.Zero, new Vector2((float)length, (float)lineWidth), SpriteEffects.None, 0);
     }
+
+    public static void DrawLine(SpriteBatch spriteBatch, Texture2D texture, Vector2 pointA, Vector2 pointB, int lineWidth, Color color)
+    {
+        // calculate angle and width
+        double angle = Math.Atan2(pointB.Y - pointA.Y, pointB.X - pointA.X);
+        double length = Vector2.Distance(pointA, pointB);
+
+        // draw
+        spriteBatch.Draw(texture, pointA, null, color, (float)angle, Vector2.Zero, new Vector2((float)length, (float)lineWidth), SpriteEffects.None, 0);
+    }
 }
