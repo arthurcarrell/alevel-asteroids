@@ -51,8 +51,8 @@ public class LivingEntity : ColliderEntity
         // calculate crit
         Random random = new Random();
 
-        int targetingScopeCount = damage.source.GetItems().FindAll(item => item == Items.TargettingScope).Count;
-        int gasolineCount = damage.source.GetItems().FindAll(item => item == Items.Gasoline).Count;
+        int targetingScopeCount = damage.source.GetItems().FindAll(item => item == Item.TARGETTING_SCOPE).Count;
+        int gasolineCount = damage.source.GetItems().FindAll(item => item == Item.GASOLINE).Count;
 
         if (Chance.Percentage(targetingScopeCount*0.1f, damage.procChance))
         {

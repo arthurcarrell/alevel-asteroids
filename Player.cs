@@ -32,10 +32,10 @@ public class Player : LivingEntity
         health = maxHealth;
         damage = 20;
 
-        items.Add(Items.TargettingScope);
-        items.Add(Items.TargettingScope);
-        items.Add(Items.TargettingScope);
-        items.Add(Items.TargettingScope);
+        items.Add(Item.TARGETTING_SCOPE);
+        items.Add(Item.TARGETTING_SCOPE);
+        items.Add(Item.TARGETTING_SCOPE);
+        items.Add(Item.TARGETTING_SCOPE);
     }
 
     // getters

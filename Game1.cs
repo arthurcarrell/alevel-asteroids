@@ -46,7 +46,7 @@ public class Game1 : Game
 
 
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 0; i++)
         {
             Meteor meteor = new Meteor(Textures.pixel, new Vector2(200, 200), 3);
 
@@ -74,6 +74,11 @@ public class Game1 : Game
         // FPS Counter
         HUD hud = new HUD(new Vector2(0, 0));
         EntityManager.entities.Add(hud);
+
+
+        // Director
+        Director director = new Director(new Vector2(0,0));
+        EntityManager.entities.Add(director);
     }
 
     protected override void Update(GameTime gameTime)

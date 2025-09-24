@@ -11,4 +11,12 @@ public class Chance
     public static T Item<T>(List<T> items) {
         return items[random.Next(0, items.Count)];
     }
+
+
+    public static int Range(int lowerBound, int upperBound) {
+        return random.Next(lowerBound, upperBound+1);
+    }
+    public static float Range(float lowerBound, float upperBound) {
+        return (float)(random.NextDouble() * upperBound + lowerBound);
+    }
 }
