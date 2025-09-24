@@ -19,6 +19,7 @@ public class Meteor : LivingEntity
         maxHealth = 50 * meteorSize;
         health = maxHealth;
         experienceValue = 10 * meteorSize;
+        damage = 10;
 
         Console.WriteLine(meteorSize);
         int renderSize = 20 + (meteorSize * 20);

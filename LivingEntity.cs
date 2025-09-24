@@ -70,10 +70,9 @@ public class LivingEntity : ColliderEntity
 
     public void DoDamage(Damage damage, bool keepQuiet = false)
     {
-        // run custom function
         // process damage
         damage = ProcessDamage(damage);
-        //damage = OnDamage(damage);
+        damage = OnDamage(damage);
 
         health -= damage.amount;
 
