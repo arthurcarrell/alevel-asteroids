@@ -12,13 +12,6 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
-    // textures
-    Texture2D cross;
-    public Texture2D pixel;
-    Texture2D ship;
-    Texture2D galaticSpaceFont;
-    Texture2D bullet; 
-
     public const int WINDOW_WIDTH = 640;
     public const int WINDOW_HEIGHT = 480;
 
@@ -48,13 +41,6 @@ public class Game1 : Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-        pixel = Content.Load<Texture2D>("pixel");
-        cross = Content.Load<Texture2D>("cross");
-        ship = Content.Load<Texture2D>("ship");
-        bullet = Content.Load<Texture2D>("bullet");
-        galaticSpaceFont = Content.Load<Texture2D>("galatic_space_font");
-
         // LOAD TEXTURES
         Textures.Load(this);
 
@@ -62,7 +48,7 @@ public class Game1 : Game
 
         for (int i = 0; i < 10; i++)
         {
-            Meteor meteor = new Meteor(pixel, new Vector2(200, 200), 3);
+            Meteor meteor = new Meteor(Textures.pixel, new Vector2(200, 200), 3);
 
             Random rnd = new Random();
             // spawn point
@@ -80,7 +66,7 @@ public class Game1 : Game
             EntityManager.entities.Add(meteor);
         }
 
-        Player player = new Player(ship, new Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
+        Player player = new Player(Textures.ship, new Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
         EntityManager.entities.Add(player);
 
 
