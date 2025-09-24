@@ -32,11 +32,10 @@ public class Player : LivingEntity
         health = maxHealth;
         damage = 20;
 
-        items.Add(Items.Gasoline);
-        items.Add(Items.Gasoline);
-        items.Add(Items.Gasoline);
-        //items.Add(Items.Gasoline);
-        //items.Add(Items.Gasoline);
+        items.Add(Items.TargettingScope);
+        items.Add(Items.TargettingScope);
+        items.Add(Items.TargettingScope);
+        items.Add(Items.TargettingScope);
     }
 
     // getters
@@ -66,13 +65,22 @@ public class Player : LivingEntity
         // Delta
         float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
         // Collider stuff
-        isColliding = GetFirstCollider() != null;
+        ColliderEntity collision = GetFirstCollider();
+        isColliding = collision != null;
         TickStatusEffects(gameTime);
 
         if (isColliding && invincibilityFrames <= 0)
         {
-            health -= 10;
-            invincibilityFrames += 1000;
+            if (collision is LivingEntity livingEntity) {
+                Damage damage = new Damage();
+                damage.amount = livingEntity.GetDamage();
+                damage.source = livingEntity;
+                damage.type = DamageType.NORMAL;
+                damage.procChance = 1;
+
+                DoDamage(damage, true);
+                invincibilityFrames += 1000;
+            }
         }
 
         if (invincibilityFrames > 0)
