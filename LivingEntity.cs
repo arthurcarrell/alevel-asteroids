@@ -18,6 +18,7 @@ public class LivingEntity : ColliderEntity
     protected List<StatusEffect> statusEffects = new List<StatusEffect>();
     public LivingEntity(Texture2D setTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setPosition, setRotation, setScale)
     {
+        EntityManager.livingEntityCount++;
     }
 
     // Getters
@@ -106,5 +107,11 @@ public class LivingEntity : ColliderEntity
             player.AddExperience(experienceValue);
         }
         Kill();
+    }
+
+    public override void Kill()
+    {
+        EntityManager.livingEntityCount--;
+        base.Kill();
     }
 }

@@ -74,7 +74,7 @@ public abstract class Entity
         Init();
     }
 
-    public void Kill()
+    public virtual void Kill()
     {
         EntityManager.entities.Remove(this);
     }

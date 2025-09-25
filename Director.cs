@@ -17,6 +17,8 @@ public class Director : Entity
     private float spawnWait = 0;
     private float maxCredits = float.MaxValue;
 
+    private const int ENTITY_CAP = 100;
+
     private float difficultyModifier = 1f;
 
 
@@ -60,17 +62,29 @@ public class Director : Entity
 
         if (spawnWait <= 0) {
             spawnWait = Chance.Range(100,10000);
-            Console.WriteLine(AttemptSpawn());
+            bool result = AttemptSpawn();
+            if (result == true) {
+                Console.WriteLine("Successfully spawned enemy");
+            } else {
+                if (EntityManager.livingEntityCount <= ENTITY_CAP) {
+                    Console.WriteLine("Failed enemy spawn: not enough credits");
+                } else {
+                    Console.WriteLine("Failed enemy spawn: too many LivingEntities");
+                }
+                
+            }
         }
     }
 
     private bool AttemptSpawn() {
         // create a meteor
-        if (credits >= 1000f) {
+
+        int meteorCost = 500;
+        if (credits >= meteorCost && EntityManager.livingEntityCount <= ENTITY_CAP) {
 
             // go for a random size
             int attemptSize = Chance.Range(1,4);
-            int spawnSize = (int)Math.Min(Math.Floor(credits/1000), 4);
+            int spawnSize = (int)Math.Min(Math.Floor(credits/meteorCost), attemptSize);
 
 
             Meteor meteor = new Meteor(Textures.pixel, new Vector2(0,0), spawnSize);
@@ -88,7 +102,7 @@ public class Director : Entity
 
             EntityManager.entities.Add(meteor);
 
-            credits -= spawnSize * 1000;
+            credits -= spawnSize * meteorCost;
             return true;
         }
 
