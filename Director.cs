@@ -15,9 +15,9 @@ public class Director : Entity
 
     private float credits = 0;
     private float spawnWait = 0;
-    private float maxCredits = float.MaxValue;
+    private int maxCredits = 5_000;
 
-    private const int ENTITY_CAP = 100;
+    private const int ENTITY_CAP = 70;
 
     private float difficultyModifier = 1f;
 
@@ -26,12 +26,15 @@ public class Director : Entity
     // totalDifficultyIncreaseTime is the amount of milliseconds it takes for the game difficulty to increase.
     // difficultyIncreaseAmount is the amount in which the difficulty increases by.
     private float difficultyIncreaseTime = 0f;
-    private float totalDifficultyIncreaseTime = 20_000f; // 20 seconds
-    private float difficultyIncreaseAmount = 0.1f;
+    private float totalDifficultyIncreaseTime = 10_000f; // 5 seconds
+    private float difficultyIncreaseAmount = 0.15f;
     public Director(Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(null, setPosition, setRotation, setScale)
     {
         shouldRender = false;
+        EntityManager.director = this;
     }
+
+    public float GetDifficultyModifier() => difficultyModifier;
 
     // Gains and spends points to summon enemies.
 
@@ -58,20 +61,28 @@ public class Director : Entity
         credits += (milliseconds / 10) * difficultyModifier;
         spawnWait -= milliseconds;
 
-        Console.WriteLine(credits);
+        if (credits > maxCredits) {
+            credits = maxCredits;
+        }
+
+        //Console.WriteLine(credits);
 
         if (spawnWait <= 0) {
+            int amountToAttemptSpawn = Chance.Range(1,5);
             spawnWait = Chance.Range(100,10000);
-            bool result = AttemptSpawn();
-            if (result == true) {
-                Console.WriteLine("Successfully spawned enemy");
-            } else {
-                if (EntityManager.livingEntityCount <= ENTITY_CAP) {
-                    Console.WriteLine("Failed enemy spawn: not enough credits");
+            Console.WriteLine($"attempting to spawn {amountToAttemptSpawn} enemies:");
+            for (int i=0; i < amountToAttemptSpawn; i++) {
+                bool result = AttemptSpawn();
+                if (result == true) {
+                    Console.WriteLine("Successfully spawned enemy");
                 } else {
-                    Console.WriteLine("Failed enemy spawn: too many LivingEntities");
+                    if (EntityManager.livingEntityCount <= ENTITY_CAP) {
+                        Console.WriteLine("Failed enemy spawn: not enough credits");
+                    } else {
+                        Console.WriteLine("Failed enemy spawn: too many LivingEntities");
+                    }
+                    
                 }
-                
             }
         }
     }
@@ -79,7 +90,7 @@ public class Director : Entity
     private bool AttemptSpawn() {
         // create a meteor
 
-        int meteorCost = 500;
+        int meteorCost = 250;
         if (credits >= meteorCost && EntityManager.livingEntityCount <= ENTITY_CAP) {
 
             // go for a random size
@@ -103,6 +114,7 @@ public class Director : Entity
             EntityManager.entities.Add(meteor);
 
             credits -= spawnSize * meteorCost;
+            Console.WriteLine($"LivingEntity count: {EntityManager.livingEntityCount}");
             return true;
         }
 

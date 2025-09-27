@@ -7,8 +7,8 @@ using Microsoft.Xna.Framework.Graphics;
 namespace alevel_asteroids;
 
 /* I want accurate collisions for each object. Because each meteor has a random size and points, it would be bad
- if you died to the air or were able to enter an entity. Instead, each entity's hitbox will be defined by a series of points that
- connect together. */
+if you died to the air or were able to enter an entity. Instead, each entity's hitbox will be defined by a series of points that
+connect together. */
 public class ColliderEntity : Entity
 {
     protected List<Vector2> hitboxPoints = new List<Vector2>(); // points of the hitbox (relative to the objects position.)

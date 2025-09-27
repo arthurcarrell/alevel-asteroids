@@ -14,14 +14,17 @@ public class Meteor : LivingEntity
 
     public Meteor(Texture2D setTexture, Vector2 setPosition, int setSize = 1, float setRotation = 0, float setScale = 1) : base(setTexture, setPosition, setRotation, setScale)
     {
+
+        // get difficulty modifier
+        float difficultyModifier = EntityManager.director.GetDifficultyModifier();
         // set stats
         meteorSize = setSize;
-        maxHealth = 50 * meteorSize;
+        maxHealth = (int)((30 * meteorSize) + ((20 * meteorSize) * difficultyModifier));
         health = maxHealth;
         experienceValue = 10 * meteorSize;
-        damage = 10;
+        damage = (int)(5 + (5 * difficultyModifier));
 
-        Console.WriteLine(meteorSize);
+        Console.WriteLine($"Instantiated: Max HP: {maxHealth}, Size: {meteorSize}, Damage : {damage}");
         int renderSize = 20 + (meteorSize * 20);
 
         CreatePoints(Math.Max(5,meteorSize*2), renderSize/12, renderSize);
@@ -93,7 +96,7 @@ public class Meteor : LivingEntity
         RenderLines(spriteBatch);
         
         // debug utility, should be hidden when done - shows points on the hitbox
-        RenderPoints(spriteBatch, isColliding);
+        //RenderPoints(spriteBatch, isColliding);
     }
 
     public override void OnDeath(Damage damage)
@@ -116,7 +119,7 @@ public class Meteor : LivingEntity
         int teleport_border = Game1.TELEPORT_BORDER;
 
         float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
-        position += Vec2Forward(rotation, 50 * delta);
+        position += Vec2Forward(rotation, 50 * delta * EntityManager.movespeedMult);
 
         // LOOPS
 

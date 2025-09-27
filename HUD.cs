@@ -63,7 +63,7 @@ class HUD : Entity
         text.Add($"modifications: {modifications}\n", healthColor);
         text.Add($"level: {level}\n", healthColor);
         text.Add($"exp: {expBar}\n", healthColor);
-        TextDrawer.DrawText(spriteBatch, text, new Vector2(0, 410), spriteFont, 1.2f);
+        TextDrawer.DrawText(spriteBatch, text, new Vector2(0, Game1.WINDOW_HEIGHT-70), spriteFont, 1.2f);
 
         if (healthColor == Color.Red) {
             Text deathWarn = new Text(deathWarnMessage, Color.Black);

@@ -12,8 +12,8 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
-    public const int WINDOW_WIDTH = 640;
-    public const int WINDOW_HEIGHT = 480;
+    public const int WINDOW_WIDTH = 1280;
+    public const int WINDOW_HEIGHT = 920;
 
     // how far outside of the game border does this need to be before it loops around
     // entities should be completely out of the screen so it looks like it seamlessly loops.
@@ -69,6 +69,7 @@ public class Game1 : Game
         Player player = new Player(Textures.ship, new Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
         EntityManager.entities.Add(player);
 
+        EntityManager.entities.Add(new ItemPickup(new Vector2(WINDOW_WIDTH / 2 + 100, WINDOW_HEIGHT / 2), 0));
 
         // UI
         // FPS Counter
@@ -79,6 +80,9 @@ public class Game1 : Game
         // Director
         Director director = new Director(new Vector2(0,0));
         EntityManager.entities.Add(director);
+
+        PickupMenu pickupMenu = new PickupMenu(new Vector2(0,0));
+        EntityManager.entities.Add(pickupMenu);
     }
 
     protected override void Update(GameTime gameTime)

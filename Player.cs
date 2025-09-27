@@ -32,10 +32,10 @@ public class Player : LivingEntity
         health = maxHealth;
         damage = 20;
 
-        items.Add(Item.TARGETTING_SCOPE);
-        items.Add(Item.TARGETTING_SCOPE);
-        items.Add(Item.TARGETTING_SCOPE);
-        items.Add(Item.TARGETTING_SCOPE);
+        //items.Add(Item.TARGETTING_SCOPE);
+        //items.Add(Item.TARGETTING_SCOPE);
+        //items.Add(Item.TARGETTING_SCOPE);
+        //items.Add(Item.TARGETTING_SCOPE);
     }
 
     // getters
@@ -57,7 +57,7 @@ public class Player : LivingEntity
     {
         base.Render(spriteBatch);
         // debug utility, should be hidden when done - shows points on the hitbox
-        RenderPoints(spriteBatch, isColliding);
+        //RenderPoints(spriteBatch, isColliding);
     }
 
     public override void Update(GameTime gameTime)
@@ -103,24 +103,27 @@ public class Player : LivingEntity
             shootCooldown -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
         }
 
+        // get movespeed mult
+        float movespeedMult = EntityManager.movespeedMult;
+
         // Movement
 
         if (Keyboard.GetState().IsKeyDown(Keys.W))
         {
-            position.Y -= speed * delta;
+            position.Y -= speed * delta * movespeedMult;
         }
         else if (Keyboard.GetState().IsKeyDown(Keys.S))
         {
-            position.Y += speed * delta;
+            position.Y += speed * delta * movespeedMult;
         }
 
         if (Keyboard.GetState().IsKeyDown(Keys.A))
         {
-            position.X -= speed * delta;
+            position.X -= speed * delta * movespeedMult;
         }
         else if (Keyboard.GetState().IsKeyDown(Keys.D))
         {
-            position.X += speed * delta;
+            position.X += speed * delta * movespeedMult;
         }
 
         MouseState mouse = Mouse.GetState();

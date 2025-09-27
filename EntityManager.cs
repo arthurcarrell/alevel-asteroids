@@ -12,6 +12,9 @@ public abstract class EntityManager
     for making the entity render, and it calls each entities Update() and Render() function. */
     public static List<Entity> entities = new List<Entity>();
     public static Player player; // this is so the player can be accessed easily everywhere.
+    public static Director director;
     public static int livingEntityCount; // this is the count of living entities so that the game doesnt spawn so many that it lags out
+
+    public static float movespeedMult = 1;
     
 }

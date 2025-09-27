@@ -36,3 +36,4 @@
 /home/arthur/GitRepos/alevel-asteroids/obj/Debug/net9.0/alevel-asteroids.pdb
 /home/arthur/GitRepos/alevel-asteroids/obj/Debug/net9.0/alevel-asteroids.genruntimeconfig.cache
 /home/arthur/GitRepos/alevel-asteroids/obj/Debug/net9.0/ref/alevel-asteroids.dll
+/home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/box.xnb

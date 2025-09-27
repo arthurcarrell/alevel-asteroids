@@ -9,8 +9,10 @@
     <File>/home/arthur/GitRepos/alevel-asteroids/Content/ship.png</File>
     <File>/home/arthur/GitRepos/alevel-asteroids/Content/galatic_space_font.png</File>
     <File>/home/arthur/GitRepos/alevel-asteroids/Content/bullet.png</File>
+    <File>/home/arthur/GitRepos/alevel-asteroids/Content/box.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
