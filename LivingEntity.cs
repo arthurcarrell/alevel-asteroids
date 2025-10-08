@@ -52,10 +52,11 @@ public class LivingEntity : ColliderEntity
         // calculate crit
         Random random = new Random();
 
-        int targetingScopeCount = damage.source.GetItems().FindAll(item => item == Item.TARGETTING_SCOPE).Count;
-        int gasolineCount = damage.source.GetItems().FindAll(item => item == Item.GASOLINE).Count;
+        List<Item> attackerItems = damage.source.GetItems();
+        int magnifyingGlassCount = attackerItems.FindAll(item => item == Items.MAGNIFYING_GLASS).Count;
+        int gasolineCount = attackerItems.FindAll(item => item == Items.GASOLINE).Count;
 
-        if (Chance.Percentage(targetingScopeCount*0.1f, damage.procChance))
+        if (Chance.Percentage(magnifyingGlassCount*0.1f, damage.procChance))
         {
             damage.amount *= 2;
             damage.type = DamageType.CRIT;
@@ -112,6 +113,9 @@ public class LivingEntity : ColliderEntity
     public override void Kill()
     {
         EntityManager.livingEntityCount--;
+        if (Chance.Percentage(1)) {
+            EntityManager.entities.Add(new ItemPickup(position));
+        }
         base.Kill();
     }
 }

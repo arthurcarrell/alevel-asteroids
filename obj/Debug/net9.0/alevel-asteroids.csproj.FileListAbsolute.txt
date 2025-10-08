@@ -37,3 +37,15 @@
 /home/arthur/GitRepos/alevel-asteroids/obj/Debug/net9.0/alevel-asteroids.genruntimeconfig.cache
 /home/arthur/GitRepos/alevel-asteroids/obj/Debug/net9.0/ref/alevel-asteroids.dll
 /home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/box.xnb
+/home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/menu_option.xnb
+/home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/Items/gasoline.xnb
+/home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/gasoline.xnb
+/home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/Items/broken_plate.xnb
+/home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/Items/magnifying_glass.xnb
+/home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/Items/missile_launcher.xnb
+/home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/Items/rocket_magazine.xnb
+/home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/broken_plate.xnb
+/home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/magnifying_glass.xnb
+/home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/missile_launcher.xnb
+/home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/rocket_magazine.xnb
+/home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/ion_booster.xnb

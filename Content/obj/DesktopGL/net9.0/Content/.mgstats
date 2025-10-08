@@ -1,7 +1,14 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "/home/arthur/GitRepos/alevel-asteroids/Content/box.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/box.xnb","TextureProcessor","Texture2DContent",171,1109,0.0959136
+"/home/arthur/GitRepos/alevel-asteroids/Content/broken_plate.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/broken_plate.xnb","TextureProcessor","Texture2DContent",288,1109,0.0005853
 "/home/arthur/GitRepos/alevel-asteroids/Content/bullet.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/bullet.xnb","TextureProcessor","Texture2DContent",99,149,0.0004134
 "/home/arthur/GitRepos/alevel-asteroids/Content/cross.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/cross.xnb","TextureProcessor","Texture2DContent",100,149,0.1122372
 "/home/arthur/GitRepos/alevel-asteroids/Content/galatic_space_font.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/galatic_space_font.xnb","TextureProcessor","Texture2DContent",568,13941,0.0017713
+"/home/arthur/GitRepos/alevel-asteroids/Content/gasoline.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/gasoline.xnb","TextureProcessor","Texture2DContent",231,1109,0.1047458
+"/home/arthur/GitRepos/alevel-asteroids/Content/ion_booster.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/ion_booster.xnb","TextureProcessor","Texture2DContent",328,1109,0.0990798
+"/home/arthur/GitRepos/alevel-asteroids/Content/magnifying_glass.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/magnifying_glass.xnb","TextureProcessor","Texture2DContent",286,1109,0.0021208
+"/home/arthur/GitRepos/alevel-asteroids/Content/menu_option.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/menu_option.xnb","TextureProcessor","Texture2DContent",242,16469,0.1415022
+"/home/arthur/GitRepos/alevel-asteroids/Content/missile_launcher.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/missile_launcher.xnb","TextureProcessor","Texture2DContent",244,1109,0.0014445
 "/home/arthur/GitRepos/alevel-asteroids/Content/pixel.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/pixel.xnb","TextureProcessor","Texture2DContent",83,89,0.0021341
+"/home/arthur/GitRepos/alevel-asteroids/Content/rocket_magazine.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/rocket_magazine.xnb","TextureProcessor","Texture2DContent",238,1109,0.000614
 "/home/arthur/GitRepos/alevel-asteroids/Content/ship.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/ship.xnb","TextureProcessor","Texture2DContent",125,1109,0.0012612

@@ -18,6 +18,7 @@ public class Game1 : Game
     // how far outside of the game border does this need to be before it loops around
     // entities should be completely out of the screen so it looks like it seamlessly loops.
     public const int TELEPORT_BORDER = 50;
+    private HUD hud;
 
     public Game1()
     {
@@ -69,20 +70,17 @@ public class Game1 : Game
         Player player = new Player(Textures.ship, new Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
         EntityManager.entities.Add(player);
 
-        EntityManager.entities.Add(new ItemPickup(new Vector2(WINDOW_WIDTH / 2 + 100, WINDOW_HEIGHT / 2), 0));
+        //EntityManager.entities.Add(new ItemPickup(new Vector2(WINDOW_WIDTH / 2 + 100, WINDOW_HEIGHT / 2), 0));
 
         // UI
         // FPS Counter
-        HUD hud = new HUD(new Vector2(0, 0));
-        EntityManager.entities.Add(hud);
+        hud = new HUD(new Vector2(0, 0));
+        //EntityManager.entities.Add(hud);
 
 
         // Director
         Director director = new Director(new Vector2(0,0));
         EntityManager.entities.Add(director);
-
-        PickupMenu pickupMenu = new PickupMenu(new Vector2(0,0));
-        EntityManager.entities.Add(pickupMenu);
     }
 
     protected override void Update(GameTime gameTime)
@@ -101,6 +99,7 @@ public class Game1 : Game
         foreach (Entity entity in tempEntities) {
             entity.Render(spriteBatch);
         }
+        hud.Render(spriteBatch);
     }
 
     protected void UpdateEntities(GameTime gameTime) {
@@ -108,6 +107,7 @@ public class Game1 : Game
         foreach (Entity entity in tempEntities) {
             entity.Update(gameTime);
         }
+        hud.Update(gameTime);
     }
     protected override void Draw(GameTime gameTime)
     {

@@ -13,7 +13,7 @@ class HUD : Entity
     private float fps = 0;
     private Texture2D spriteFont = Textures.galaticSpaceFont;
     private List<String> deathWarnMessages = new List<string>() {
-                "you are going to die", "death is inevitable", "nothing lasts forever", "perhaps this is hell"
+                "you are going to die", "death is inevitable", "perhaps this is hell"
             };
 
     private float deathMessageSwapTime = 1;
@@ -65,8 +65,10 @@ class HUD : Entity
         text.Add($"exp: {expBar}\n", healthColor);
         TextDrawer.DrawText(spriteBatch, text, new Vector2(0, Game1.WINDOW_HEIGHT-70), spriteFont, 1.2f);
 
+        // Death Message Animation
         if (healthColor == Color.Red) {
             Text deathWarn = new Text(deathWarnMessage, Color.Black);
+            int textScale = 4;
 
             if (deathMessageAnimCooldown <= 0) {
                 deathMessageAnim = 2000;
@@ -76,13 +78,13 @@ class HUD : Entity
             }
             if (deathMessageShowRectangle) {
                 // draw the rectangle
-                int paddingY = 40;
+                int paddingY = 20*textScale;
                 int paddingX = 10;
-                LineDrawer.DrawLine(spriteBatch, Textures.pixel, new Vector2(Game1.WINDOW_WIDTH/2 - paddingX - deathWarn.GetPixelLength(2)/2, Game1.WINDOW_HEIGHT/2 - paddingY/4), new Vector2(Game1.WINDOW_WIDTH/2 + paddingX + deathWarn.GetPixelLength(2)/2, Game1.WINDOW_HEIGHT/2 - paddingY/4), paddingY, Color.Red);
+                LineDrawer.DrawLine(spriteBatch, Textures.pixel, new Vector2(Game1.WINDOW_WIDTH/2 - paddingX - deathWarn.GetPixelLength(textScale)/2, Game1.WINDOW_HEIGHT/2 - paddingY/4), new Vector2(Game1.WINDOW_WIDTH/2 + paddingX + deathWarn.GetPixelLength(textScale)/2, Game1.WINDOW_HEIGHT/2 - paddingY/4), paddingY, Color.Red);
             }
             
             if (deathMessageShowText) {
-                TextDrawer.DrawText(spriteBatch, deathWarn, new Vector2(Game1.WINDOW_WIDTH/2 - deathWarn.GetPixelLength(2)/2, Game1.WINDOW_HEIGHT/2), spriteFont, 2);
+                TextDrawer.DrawText(spriteBatch, deathWarn, new Vector2(Game1.WINDOW_WIDTH/2 - deathWarn.GetPixelLength(textScale)/2, Game1.WINDOW_HEIGHT/2), spriteFont, textScale);
             }          
         }
     }

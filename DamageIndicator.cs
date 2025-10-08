@@ -32,10 +32,6 @@ class DamageIndicator : Entity
             _ => Color.Yellow
         };
 
-        
-
-        
-
         TextDrawer.DrawText(spriteBatch, new Text($"{damage.amount}", damageColor), position, Textures.galaticSpaceFont, damageRatio);
     }
 

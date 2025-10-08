@@ -12,6 +12,15 @@ public static class Textures
     public static Texture2D galaticSpaceFont;
     public static Texture2D bullet;
     public static Texture2D box;
+    public static Texture2D menuOption;
+
+    // ITEMS
+    public static Texture2D itemBrokenPlate;
+    public static Texture2D itemGasoline;
+    public static Texture2D itemMagnifyingGlass;
+    public static Texture2D itemMissileLauncher;
+    public static Texture2D itemRocketMagazine;
+    public static Texture2D itemIonBooster;
     public static void Load(Game game)
     {
         pixel = game.Content.Load<Texture2D>("pixel");
@@ -20,5 +29,14 @@ public static class Textures
         bullet = game.Content.Load<Texture2D>("bullet");
         galaticSpaceFont = game.Content.Load<Texture2D>("galatic_space_font");
         box = game.Content.Load<Texture2D>("box");
+        menuOption = game.Content.Load<Texture2D>("menu_option");
+
+        // Items
+        itemBrokenPlate = game.Content.Load<Texture2D>("broken_plate");
+        itemGasoline = game.Content.Load<Texture2D>("gasoline");
+        itemMagnifyingGlass = game.Content.Load<Texture2D>("magnifying_glass");
+        itemMissileLauncher = game.Content.Load<Texture2D>("missile_launcher");
+        itemRocketMagazine = game.Content.Load<Texture2D>("rocket_magazine");
+        itemIonBooster = game.Content.Load<Texture2D>("ion_booster");
     }
 }

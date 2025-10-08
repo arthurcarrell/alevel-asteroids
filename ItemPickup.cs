@@ -32,7 +32,7 @@ public class ItemPickup : ColliderEntity
         position += Vec2Forward(trueRotation, 50 * delta);
 
         if (collision is Player player) {
-            EntityManager.movespeedMult = 0;
+            EntityManager.entities.Add(new PickupMenu(new Vector2(0,0)));
             Kill();
         }
 

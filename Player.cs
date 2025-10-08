@@ -26,16 +26,10 @@ public class Player : LivingEntity
     List<Vector2> points = new List<Vector2>() { new Vector2(-8, -8), new Vector2(8, -8), new Vector2(-8, 8), new Vector2(8, 8), new Vector2(0, 0) };
     public Player(Texture2D setTexture, Vector2 setPosition, float setRotation = 0, float setScale = 1) : base(setTexture, setPosition, setRotation, setScale)
     {
-
         // set stats
         maxHealth = 200;
         health = maxHealth;
         damage = 20;
-
-        //items.Add(Item.TARGETTING_SCOPE);
-        //items.Add(Item.TARGETTING_SCOPE);
-        //items.Add(Item.TARGETTING_SCOPE);
-        //items.Add(Item.TARGETTING_SCOPE);
     }
 
     // getters
@@ -43,6 +37,8 @@ public class Player : LivingEntity
     public int GetLevel() => level;
     public float GetExpPercent() => (float)experience / (float)requiredExperience;
 
+    // setters
+    public void AddItem(Item item) => items.Add(item);
     protected override void Init()
     {
         SetPoints(points);
@@ -95,7 +91,9 @@ public class Player : LivingEntity
         if (Keyboard.GetState().IsKeyDown(Keys.Space) && shootCooldown <= 0)
         {
             EntityManager.entities.Add(new Bullet(Textures.bullet, position + Vec2Forward(rotation, 20), this, rotation));
-            shootCooldown = 500;
+
+            int boosterCount = items.FindAll(item => item == Items.ION_BOOSTER).Count;
+            shootCooldown = Math.Max(500 - (50 * boosterCount), 10);
         }
 
         if (shootCooldown > 0)

@@ -58,7 +58,7 @@ public class Bullet : ColliderEntity
 
         // move forward
         float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
-        position += Vec2Forward(rotation, 500 * delta);
+        position += Vec2Forward(rotation, 500 * delta * EntityManager.movespeedMult);
 
 
         // LOOPS
