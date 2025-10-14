@@ -50,11 +50,11 @@ public class LivingEntity : ColliderEntity
     public Damage ProcessDamage(Damage damage)
     {
         // calculate crit
-        Random random = new Random();
-
         List<Item> attackerItems = damage.source.GetItems();
         int magnifyingGlassCount = attackerItems.FindAll(item => item == Items.MAGNIFYING_GLASS).Count;
         int gasolineCount = attackerItems.FindAll(item => item == Items.GASOLINE).Count;
+        int missileLauncherCount = attackerItems.FindAll(item => item == Items.MISSILE_LAUNCHER).Count;
+
 
         if (Chance.Percentage(magnifyingGlassCount*0.1f, damage.procChance))
         {
@@ -64,7 +64,13 @@ public class LivingEntity : ColliderEntity
 
         if (Chance.Percentage(gasolineCount*0.1f, damage.procChance))
         {
-            statusEffects.Add(new FireStatusEffect(5000f, damage.source));
+            statusEffects.Add(new FireStatusEffect(damage, 5000f));
+        }
+
+        if (Chance.Percentage(0.05f, damage.procChance) && missileLauncherCount > 0)
+        {
+            // spawn a missile
+            EntityManager.entities.Add(new Missile(damage.source.position + Vec2Forward(damage.source.rotation, 40), damage.source, missileLauncherCount, this, damage.source.rotation));
         }
 
         return damage;
@@ -113,7 +119,7 @@ public class LivingEntity : ColliderEntity
     public override void Kill()
     {
         EntityManager.livingEntityCount--;
-        if (Chance.Percentage(1)) {
+        if (Chance.Percentage(0.1f)) {
             EntityManager.entities.Add(new ItemPickup(position));
         }
         base.Kill();

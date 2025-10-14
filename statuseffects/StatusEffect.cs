@@ -6,13 +6,13 @@ public class StatusEffect
 {
     public float timeLeft = 0;
     public float maxTimeLeft = 0;
-    public LivingEntity owner;
+    public Damage cause;
 
-    public StatusEffect(LivingEntity setOwner, float setMaxTime)
+    public StatusEffect(Damage setCause, float setMaxTime)
     {
         timeLeft = setMaxTime;
         maxTimeLeft = setMaxTime;
-        owner = setOwner;
+        cause = setCause;
     }
 
     public virtual void Tick(LivingEntity entity, GameTime gameTime)

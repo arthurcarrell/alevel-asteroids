@@ -11,6 +11,7 @@
     <File>/home/arthur/GitRepos/alevel-asteroids/Content/bullet.png</File>
     <File>/home/arthur/GitRepos/alevel-asteroids/Content/box.png</File>
     <File>/home/arthur/GitRepos/alevel-asteroids/Content/menu_option.png</File>
+    <File>/home/arthur/GitRepos/alevel-asteroids/Content/missile.png</File>
     <File>/home/arthur/GitRepos/alevel-asteroids/Content/gasoline.png</File>
     <File>/home/arthur/GitRepos/alevel-asteroids/Content/magnifying_glass.png</File>
     <File>/home/arthur/GitRepos/alevel-asteroids/Content/missile_launcher.png</File>
@@ -19,6 +20,7 @@
     <File>/home/arthur/GitRepos/alevel-asteroids/Content/ion_booster.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

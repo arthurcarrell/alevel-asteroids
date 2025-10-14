@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("alevel-asteroids")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cd9837c2357b3f56bfa943a3071d4d5a8b4e3b9f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e476a420577e76774374ddaa069ff49b65d906e1")]
 [assembly: System.Reflection.AssemblyProductAttribute("alevel-asteroids")]
 [assembly: System.Reflection.AssemblyTitleAttribute("alevel-asteroids")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

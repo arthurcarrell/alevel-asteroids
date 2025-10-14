@@ -13,6 +13,7 @@ public static class Textures
     public static Texture2D bullet;
     public static Texture2D box;
     public static Texture2D menuOption;
+    public static Texture2D missile;
 
     // ITEMS
     public static Texture2D itemBrokenPlate;
@@ -30,6 +31,7 @@ public static class Textures
         galaticSpaceFont = game.Content.Load<Texture2D>("galatic_space_font");
         box = game.Content.Load<Texture2D>("box");
         menuOption = game.Content.Load<Texture2D>("menu_option");
+        missile = game.Content.Load<Texture2D>("missile");
 
         // Items
         itemBrokenPlate = game.Content.Load<Texture2D>("broken_plate");

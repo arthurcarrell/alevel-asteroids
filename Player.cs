@@ -29,7 +29,7 @@ public class Player : LivingEntity
         // set stats
         maxHealth = 200;
         health = maxHealth;
-        damage = 20;
+        damage = 20;        
     }
 
     // getters

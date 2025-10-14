@@ -49,3 +49,4 @@
 /home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/missile_launcher.xnb
 /home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/rocket_magazine.xnb
 /home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/ion_booster.xnb
+/home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/missile.xnb
