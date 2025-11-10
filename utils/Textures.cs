@@ -22,6 +22,7 @@ public static class Textures
     public static Texture2D itemMissileLauncher;
     public static Texture2D itemRocketMagazine;
     public static Texture2D itemIonBooster;
+    public static Texture2D itemVampiricNanites;
     public static void Load(Game game)
     {
         pixel = game.Content.Load<Texture2D>("pixel");
@@ -40,5 +41,6 @@ public static class Textures
         itemMissileLauncher = game.Content.Load<Texture2D>("missile_launcher");
         itemRocketMagazine = game.Content.Load<Texture2D>("rocket_magazine");
         itemIonBooster = game.Content.Load<Texture2D>("ion_booster");
+        itemVampiricNanites = game.Content.Load<Texture2D>("vampiric_nanites");
     }
 }

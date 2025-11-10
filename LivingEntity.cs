@@ -47,6 +47,25 @@ public class LivingEntity : ColliderEntity
         }
     }
 
+    public void Heal(int amount, bool display=true)
+    {
+        if (display) {
+            Damage damage = new Damage();
+            damage.amount = amount;
+            damage.type = DamageType.HEAL;
+            damage.source = this;
+            damage.procChance = 0;
+            EntityManager.entities.Add(new DamageIndicator(damage, position));
+        }
+        
+
+        if (health+amount > maxHealth) {
+            health = maxHealth;
+        } else {
+            health += amount;
+        }
+    } 
+
     public Damage ProcessDamage(Damage damage)
     {
         // calculate crit
@@ -54,7 +73,7 @@ public class LivingEntity : ColliderEntity
         int magnifyingGlassCount = attackerItems.FindAll(item => item == Items.MAGNIFYING_GLASS).Count;
         int gasolineCount = attackerItems.FindAll(item => item == Items.GASOLINE).Count;
         int missileLauncherCount = attackerItems.FindAll(item => item == Items.MISSILE_LAUNCHER).Count;
-
+        int vampiricNanitesCount = attackerItems.FindAll(item => item == Items.VAMPIRIC_NANITES).Count;
 
         if (Chance.Percentage(magnifyingGlassCount*0.1f, damage.procChance))
         {
@@ -71,6 +90,11 @@ public class LivingEntity : ColliderEntity
         {
             // spawn a missile
             EntityManager.entities.Add(new Missile(damage.source.position + Vec2Forward(damage.source.rotation, 40), damage.source, missileLauncherCount, this, damage.source.rotation));
+        }
+
+        if (vampiricNanitesCount > 0 && damage.source != this && damage.procChance > 0)
+        {
+            damage.source.Heal(vampiricNanitesCount);
         }
 
         return damage;
@@ -119,7 +143,7 @@ public class LivingEntity : ColliderEntity
     public override void Kill()
     {
         EntityManager.livingEntityCount--;
-        if (Chance.Percentage(0.1f)) {
+        if (Chance.Percentage(1.2f)) {
             EntityManager.entities.Add(new ItemPickup(position));
         }
         base.Kill();

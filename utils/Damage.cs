@@ -5,6 +5,7 @@ public enum DamageType
     NORMAL,
     CRIT,
     FIRE,
+    HEAL
 }
 
 

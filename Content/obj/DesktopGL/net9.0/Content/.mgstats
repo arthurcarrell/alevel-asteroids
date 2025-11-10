@@ -13,3 +13,4 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "/home/arthur/GitRepos/alevel-asteroids/Content/pixel.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/pixel.xnb","TextureProcessor","Texture2DContent",83,89,0.0021341
 "/home/arthur/GitRepos/alevel-asteroids/Content/rocket_magazine.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/rocket_magazine.xnb","TextureProcessor","Texture2DContent",238,1109,0.000614
 "/home/arthur/GitRepos/alevel-asteroids/Content/ship.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/ship.xnb","TextureProcessor","Texture2DContent",125,1109,0.0012612
+"/home/arthur/GitRepos/alevel-asteroids/Content/vampiric_nanites.png","/home/arthur/GitRepos/alevel-asteroids/Content/bin/DesktopGL/Content/vampiric_nanites.xnb","TextureProcessor","Texture2DContent",255,1109,0.0968584

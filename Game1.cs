@@ -18,7 +18,9 @@ public class Game1 : Game
     // how far outside of the game border does this need to be before it loops around
     // entities should be completely out of the screen so it looks like it seamlessly loops.
     public const int TELEPORT_BORDER = 50;
+    private int drawCount;
     private HUD hud;
+    private HUDDebug hudDebug;
 
     public Game1()
     {
@@ -68,7 +70,7 @@ public class Game1 : Game
         }
 
         Player player = new Player(Textures.ship, new Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
-        EntityManager.entities.Add(player);
+        //EntityManager.entities.Add(player);
 
         //EntityManager.entities.Add(new ItemPickup(new Vector2(WINDOW_WIDTH / 2 + 100, WINDOW_HEIGHT / 2), 0));
 
@@ -81,6 +83,9 @@ public class Game1 : Game
         // Director
         Director director = new Director(new Vector2(0,0));
         EntityManager.entities.Add(director);
+
+        hudDebug = new HUDDebug(null, new Vector2(0,0));
+        
     }
 
     protected override void Update(GameTime gameTime)
@@ -94,12 +99,17 @@ public class Game1 : Game
         base.Update(gameTime);
     }
 
-    protected void DrawEntities(SpriteBatch spriteBatch) {
+    protected void DrawEntities(SpriteBatch spriteBatch, GameTime gameTime) {
         List<Entity> tempEntities = new List<Entity>(EntityManager.entities); // prevents modification during foreach loop which leads to a crash
+        Console.Clear();
+        drawCount++;
+        Console.WriteLine($"Draw: {drawCount}");
         foreach (Entity entity in tempEntities) {
+            Console.WriteLine(entity);
             entity.Render(spriteBatch);
         }
         hud.Render(spriteBatch);
+        hudDebug.Render(spriteBatch, gameTime);
     }
 
     protected void UpdateEntities(GameTime gameTime) {
@@ -108,6 +118,7 @@ public class Game1 : Game
             entity.Update(gameTime);
         }
         hud.Update(gameTime);
+        hudDebug.Update(gameTime);
     }
     protected override void Draw(GameTime gameTime)
     {
@@ -115,7 +126,7 @@ public class Game1 : Game
 
         // TODO: Add your drawing code here
         _spriteBatch.Begin(samplerState: SamplerState.PointClamp); // set samplerState to pointclamp so no pixels are blurred
-        DrawEntities(_spriteBatch);
+        DrawEntities(_spriteBatch, gameTime);
         
         _spriteBatch.End();
 

@@ -29,6 +29,7 @@ class DamageIndicator : Entity
         {
             DamageType.CRIT => Color.Red,
             DamageType.FIRE => Color.Orange,
+            DamageType.HEAL => Color.Lime,
             _ => Color.Yellow
         };
 

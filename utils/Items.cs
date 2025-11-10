@@ -17,7 +17,7 @@ public class Items {
     public static Item MAGNIFYING_GLASS = new Item("Magnifying Glass", Tier.COMMON, Textures.itemMagnifyingGlass, new Text("+10% chance to deal double damage on hit"));
     public static Item BROKEN_PLATE = new Item("Broken Plate", Tier.COMMON, Textures.itemBrokenPlate, new Text("+50 Max Health"));
     public static Item ION_BOOSTER = new Item("Ion Booster", Tier.COMMON, Textures.itemIonBooster, new Text("Gain attack speed"));
-    public static Item LEECHING_ROUND = new Item("Leeching Round", Tier.COMMON, Textures.itemBrokenPlate, new Text("Heal +1 HP on hit"));
+    public static Item VAMPIRIC_NANITES = new Item("Vampiric Nanites", Tier.COMMON, Textures.itemVampiricNanites, new Text("Heal +1 HP on hit"));
     
     // RARE
     public static Item MISSILE_LAUNCHER = new Item("Missile Launcher", Tier.RARE, Textures.itemMissileLauncher, new Text("5% Chance to shoot a missile on hit"));

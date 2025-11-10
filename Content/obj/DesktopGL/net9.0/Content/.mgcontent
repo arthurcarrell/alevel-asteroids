@@ -18,8 +18,10 @@
     <File>/home/arthur/GitRepos/alevel-asteroids/Content/broken_plate.png</File>
     <File>/home/arthur/GitRepos/alevel-asteroids/Content/rocket_magazine.png</File>
     <File>/home/arthur/GitRepos/alevel-asteroids/Content/ion_booster.png</File>
+    <File>/home/arthur/GitRepos/alevel-asteroids/Content/vampiric_nanites.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

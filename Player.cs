@@ -29,7 +29,13 @@ public class Player : LivingEntity
         // set stats
         maxHealth = 200;
         health = maxHealth;
-        damage = 20;        
+        damage = 20;
+
+        // give myself some starting items for debug
+        //items.Add(Items.VAMPIRIC_NANITES);
+        for (int i=0; i < 9; i++) {
+            items.Add(Items.ION_BOOSTER);
+        }
     }
 
     // getters

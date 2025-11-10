@@ -48,7 +48,7 @@ class HUD : Entity
         if (healthPercent >= 70) { healthColor = Color.Lime; systemText = "all systems nominal"; }
         else if (healthPercent >= 50) { healthColor = Color.Yellow; systemText = "systems operational"; }
         else if (healthPercent >= 30) { healthColor = Color.Orange; systemText = "systems damaged"; }
-        else if (healthPercent > 0) { healthColor = Color.Red; systemText = lowHealthSystemText; }
+        else if (health > 0) { healthColor = Color.Red; systemText = lowHealthSystemText; }
         else { healthColor = Color.Gray; }
 
         string expBar = "";
