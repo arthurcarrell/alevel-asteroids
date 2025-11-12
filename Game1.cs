@@ -53,8 +53,8 @@ public class Game1 : Game
         hud = new HUD(new Vector2(0, 0)); // Hud is an entity, but it doesnt exist with the EntityManager system due to needing to be executed uniquely
 
         // Director
-        //Director director = new Director(new Vector2(0,0));
-        //EntityManager.entities.Add(director);
+        Director director = new Director(new Vector2(0,0));
+        EntityManager.entities.Add(director);
 
         hudDebug = new HUDDebug(null, new Vector2(0,0)); // HudDebug is an entity, but it doesnt exist with the EntityManager system due to needing to be executed uniquely
     }
