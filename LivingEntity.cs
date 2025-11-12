@@ -89,7 +89,7 @@ public class LivingEntity : ColliderEntity
         if (Chance.Percentage(0.05f, damage.procChance) && missileLauncherCount > 0)
         {
             // spawn a missile
-            EntityManager.entities.Add(new Missile(damage.source.position + Vec2Forward(damage.source.rotation, 40), damage.source, missileLauncherCount, this, damage.source.rotation));
+            EntityManager.entities.Add(new Missile(damage.source.position + Vec2Forward(damage.source.rotation, 40), damage, missileLauncherCount, this));
         }
 
         if (vampiricNanitesCount > 0 && damage.source != this && damage.procChance > 0)
@@ -137,13 +137,28 @@ public class LivingEntity : ColliderEntity
         {
             player.AddExperience(experienceValue);
         }
+
+        // get items
+        int proximityMineCount = damage.source.GetItems().FindAll(item => item == Items.PROXIMITY_MINES).Count;
+
+        // proximity mine
+        if (Chance.Percentage(0.1f*proximityMineCount, damage.procChance)) {
+            // create a mine
+            Damage mineDamage = new Damage();
+            mineDamage.amount = damage.amount * 2;
+            mineDamage.procChance = damage.procChance / 2;
+            mineDamage.source = damage.source;
+            EntityManager.entities.Add(new ProximityMine(position, mineDamage));
+        }
+
+
         Kill();
     }
 
     public override void Kill()
     {
         EntityManager.livingEntityCount--;
-        if (Chance.Percentage(1.2f)) {
+        if (Chance.Percentage(0.1f)) {
             EntityManager.entities.Add(new ItemPickup(position));
         }
         base.Kill();

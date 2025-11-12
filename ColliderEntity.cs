@@ -149,6 +149,8 @@ public class ColliderEntity : Entity
     // checks if this sprite is colliding with any collider entity that has collision enabled
 
 #nullable enable
+
+    // This one should be used for most situations, as most things arent expected to hit multiple things.
     protected ColliderEntity? GetFirstCollider()
     {
         List<Entity> tempEntities = new List<Entity>(EntityManager.entities); // prevents modification during foreach loop which leads to a crash
@@ -168,5 +170,28 @@ public class ColliderEntity : Entity
         return null;
     }
 
+#nullable disable
 
+    // Should be used for Area of Effect stuff such as explosions that are designed to hit multiple things.
+    protected List<ColliderEntity> GetAllColliders()
+    {
+        List<ColliderEntity> collisions = new List<ColliderEntity>();
+        List<Entity> tempEntities = new List<Entity>(EntityManager.entities); // prevents modification during foreach loop which leads to a crash
+        foreach (Entity entity in tempEntities)
+        {
+            if (entity is ColliderEntity && entity != this)
+            {
+                ColliderEntity colliderEntity = (ColliderEntity)entity;
+                if (colliderEntity.GetShouldCollide())
+                {
+                    bool answer = IsCollidingWith(colliderEntity);
+                    if (answer) {
+                        collisions.Add(colliderEntity);
+                    }
+                }
+            }
+        }
+
+        return collisions;
+    }
 }

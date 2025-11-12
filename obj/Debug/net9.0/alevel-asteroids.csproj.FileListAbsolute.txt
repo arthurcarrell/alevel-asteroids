@@ -51,3 +51,6 @@
 /home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/ion_booster.xnb
 /home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/missile.xnb
 /home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/vampiric_nanites.xnb
+/home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/explosion.xnb
+/home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/proximity_mine.xnb
+/home/arthur/GitRepos/alevel-asteroids/bin/Debug/net9.0/Content/proximity_mines.xnb

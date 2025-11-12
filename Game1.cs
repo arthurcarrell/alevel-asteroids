@@ -47,45 +47,16 @@ public class Game1 : Game
         // LOAD TEXTURES
         Textures.Load(this);
 
-
-
-        for (int i = 0; i < 0; i++)
-        {
-            Meteor meteor = new Meteor(Textures.pixel, new Vector2(200, 200), 3);
-
-            Random rnd = new Random();
-            // spawn point
-            meteor.position.Y = rnd.Next(0, WINDOW_HEIGHT);
-
-            if (rnd.Next(0, 2) == 1)
-            {
-                meteor.position.X = 0 - TELEPORT_BORDER;
-            }
-            else
-            {
-                meteor.position.X = WINDOW_WIDTH + TELEPORT_BORDER;
-            }
-
-            EntityManager.entities.Add(meteor);
-        }
-
         Player player = new Player(Textures.ship, new Vector2(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
-        //EntityManager.entities.Add(player);
+        EntityManager.entities.Add(player);
 
-        //EntityManager.entities.Add(new ItemPickup(new Vector2(WINDOW_WIDTH / 2 + 100, WINDOW_HEIGHT / 2), 0));
-
-        // UI
-        // FPS Counter
-        hud = new HUD(new Vector2(0, 0));
-        //EntityManager.entities.Add(hud);
-
+        hud = new HUD(new Vector2(0, 0)); // Hud is an entity, but it doesnt exist with the EntityManager system due to needing to be executed uniquely
 
         // Director
-        Director director = new Director(new Vector2(0,0));
-        EntityManager.entities.Add(director);
+        //Director director = new Director(new Vector2(0,0));
+        //EntityManager.entities.Add(director);
 
-        hudDebug = new HUDDebug(null, new Vector2(0,0));
-        
+        hudDebug = new HUDDebug(null, new Vector2(0,0)); // HudDebug is an entity, but it doesnt exist with the EntityManager system due to needing to be executed uniquely
     }
 
     protected override void Update(GameTime gameTime)

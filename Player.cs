@@ -32,10 +32,10 @@ public class Player : LivingEntity
         damage = 20;
 
         // give myself some starting items for debug
-        //items.Add(Items.VAMPIRIC_NANITES);
+        /*items.Add(Items.MISSILE_LAUNCHER);
         for (int i=0; i < 9; i++) {
             items.Add(Items.ION_BOOSTER);
-        }
+        }*/
     }
 
     // getters

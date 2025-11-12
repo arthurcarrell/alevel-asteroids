@@ -8,16 +8,17 @@ namespace alevel_asteroids;
 // Clone of Bullet but with some changes such as targetting and more damage
 public class Missile : ColliderEntity
 {
+    private Damage procDamage;
     private LivingEntity owner;
     private Entity target;
     private float missileCount;
     private float baseRotation;
     List<Vector2> points = new List<Vector2>() { new Vector2(-8,-8), new Vector2(8,-8), new Vector2(-8,8), new Vector2(8,8)};
 
-    public Missile(Vector2 setPosition, LivingEntity setOwner, float amount, Entity setTarget, float setRotation = 0, float setScale = 1) : base(Textures.missile, setPosition, setRotation, setScale)
+    public Missile(Vector2 setPosition, Damage originalDamage, float amount, Entity setTarget, float setRotation = 0, float setScale = 1) : base(Textures.missile, setPosition, setRotation, setScale)
     {
-        owner = setOwner;
         target = setTarget;
+        procDamage = originalDamage;
         missileCount = amount;
         baseRotation = rotation;
     }
@@ -28,10 +29,10 @@ public class Missile : ColliderEntity
         {
             // create the damage structure
             Damage damage = new Damage();
-            damage.amount = (int)Math.Round(owner.GetDamage() * (1.5 + 1.5*missileCount));
-            damage.source = owner;
+            damage.amount = (int)Math.Round(procDamage.amount * (1.5 + 1.5*missileCount));
+            damage.source = procDamage.source;
             damage.type = DamageType.NORMAL;
-            damage.procChance = 1f;
+            damage.procChance = procDamage.procChance * 0.75f;
 
             // pass it over
             livingEntity.DoDamage(damage);
@@ -49,6 +50,7 @@ public class Missile : ColliderEntity
     {
         SetPoints(points);
         shouldCollide = true;
+        owner = procDamage.source;
         base.Init();
     }
 
@@ -65,7 +67,7 @@ public class Missile : ColliderEntity
             rotation = baseRotation;
         }
 
-        // check if target is alive, if not, then pick a new one
+        // check if target is alive
         if (!EntityManager.entities.Contains(target)) {
             target = null;
         }

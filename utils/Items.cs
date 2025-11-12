@@ -18,6 +18,7 @@ public class Items {
     public static Item BROKEN_PLATE = new Item("Broken Plate", Tier.COMMON, Textures.itemBrokenPlate, new Text("+50 Max Health"));
     public static Item ION_BOOSTER = new Item("Ion Booster", Tier.COMMON, Textures.itemIonBooster, new Text("Gain attack speed"));
     public static Item VAMPIRIC_NANITES = new Item("Vampiric Nanites", Tier.COMMON, Textures.itemVampiricNanites, new Text("Heal +1 HP on hit"));
+    public static Item PROXIMITY_MINES = new Item("Proximity Mines", Tier.COMMON, Textures.itemProximityMines, new Text("Chance to leave a mine on enemy kill"));
     
     // RARE
     public static Item MISSILE_LAUNCHER = new Item("Missile Launcher", Tier.RARE, Textures.itemMissileLauncher, new Text("5% Chance to shoot a missile on hit"));

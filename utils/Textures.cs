@@ -14,6 +14,8 @@ public static class Textures
     public static Texture2D box;
     public static Texture2D menuOption;
     public static Texture2D missile;
+    public static Texture2D proximityMine;
+    public static Texture2D explosion;
 
     // ITEMS
     public static Texture2D itemBrokenPlate;
@@ -23,6 +25,7 @@ public static class Textures
     public static Texture2D itemRocketMagazine;
     public static Texture2D itemIonBooster;
     public static Texture2D itemVampiricNanites;
+    public static Texture2D itemProximityMines;
     public static void Load(Game game)
     {
         pixel = game.Content.Load<Texture2D>("pixel");
@@ -33,6 +36,8 @@ public static class Textures
         box = game.Content.Load<Texture2D>("box");
         menuOption = game.Content.Load<Texture2D>("menu_option");
         missile = game.Content.Load<Texture2D>("missile");
+        proximityMine = game.Content.Load<Texture2D>("proximity_mine");
+        explosion = game.Content.Load<Texture2D>("explosion");
 
         // Items
         itemBrokenPlate = game.Content.Load<Texture2D>("broken_plate");
@@ -42,5 +47,6 @@ public static class Textures
         itemRocketMagazine = game.Content.Load<Texture2D>("rocket_magazine");
         itemIonBooster = game.Content.Load<Texture2D>("ion_booster");
         itemVampiricNanites = game.Content.Load<Texture2D>("vampiric_nanites");
+        itemProximityMines = game.Content.Load<Texture2D>("proximity_mines");
     }
 }
