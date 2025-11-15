@@ -72,11 +72,7 @@ public class Game1 : Game
 
     protected void DrawEntities(SpriteBatch spriteBatch, GameTime gameTime) {
         List<Entity> tempEntities = new List<Entity>(EntityManager.entities); // prevents modification during foreach loop which leads to a crash
-        Console.Clear();
-        drawCount++;
-        Console.WriteLine($"Draw: {drawCount}");
         foreach (Entity entity in tempEntities) {
-            Console.WriteLine(entity);
             entity.Render(spriteBatch);
         }
         hud.Render(spriteBatch);

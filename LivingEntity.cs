@@ -47,9 +47,10 @@ public class LivingEntity : ColliderEntity
         }
     }
 
-    public void Heal(int amount, bool display=true)
+    public void Heal(int amount, bool display = true)
     {
-        if (display) {
+        if (display)
+        {
             Damage damage = new Damage();
             damage.amount = amount;
             damage.type = DamageType.HEAL;
@@ -57,14 +58,17 @@ public class LivingEntity : ColliderEntity
             damage.procChance = 0;
             EntityManager.entities.Add(new DamageIndicator(damage, position));
         }
-        
 
-        if (health+amount > maxHealth) {
+
+        if (health + amount > maxHealth)
+        {
             health = maxHealth;
-        } else {
+        }
+        else
+        {
             health += amount;
         }
-    } 
+    }
 
     public Damage ProcessDamage(Damage damage)
     {
@@ -75,13 +79,13 @@ public class LivingEntity : ColliderEntity
         int missileLauncherCount = attackerItems.FindAll(item => item == Items.MISSILE_LAUNCHER).Count;
         int vampiricNanitesCount = attackerItems.FindAll(item => item == Items.VAMPIRIC_NANITES).Count;
 
-        if (Chance.Percentage(magnifyingGlassCount*0.1f, damage.procChance))
+        if (Chance.Percentage(magnifyingGlassCount * 0.1f, damage.procChance))
         {
             damage.amount *= 2;
             damage.type = DamageType.CRIT;
         }
 
-        if (Chance.Percentage(gasolineCount*0.1f, damage.procChance))
+        if (Chance.Percentage(gasolineCount * 0.1f, damage.procChance))
         {
             statusEffects.Add(new FireStatusEffect(damage, 5000f));
         }
@@ -142,7 +146,8 @@ public class LivingEntity : ColliderEntity
         int proximityMineCount = damage.source.GetItems().FindAll(item => item == Items.PROXIMITY_MINES).Count;
 
         // proximity mine
-        if (Chance.Percentage(0.1f*proximityMineCount, damage.procChance)) {
+        if (Chance.Percentage(0.1f * proximityMineCount, damage.procChance))
+        {
             // create a mine
             Damage mineDamage = new Damage();
             mineDamage.amount = damage.amount * 2;
@@ -158,7 +163,8 @@ public class LivingEntity : ColliderEntity
     public override void Kill()
     {
         EntityManager.livingEntityCount--;
-        if (Chance.Percentage(0.1f)) {
+        if (Chance.Percentage(0.1f))
+        {
             EntityManager.entities.Add(new ItemPickup(position));
         }
         base.Kill();

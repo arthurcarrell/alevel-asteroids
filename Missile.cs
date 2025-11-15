@@ -13,7 +13,7 @@ public class Missile : ColliderEntity
     private Entity target;
     private float missileCount;
     private float baseRotation;
-    List<Vector2> points = new List<Vector2>() { new Vector2(-8,-8), new Vector2(8,-8), new Vector2(-8,8), new Vector2(8,8)};
+    List<Vector2> points = new List<Vector2>() { new Vector2(-8, -8), new Vector2(8, -8), new Vector2(-8, 8), new Vector2(8, 8) };
 
     public Missile(Vector2 setPosition, Damage originalDamage, float amount, Entity setTarget, float setRotation = 0, float setScale = 1) : base(Textures.missile, setPosition, setRotation, setScale)
     {
@@ -29,7 +29,7 @@ public class Missile : ColliderEntity
         {
             // create the damage structure
             Damage damage = new Damage();
-            damage.amount = (int)Math.Round(procDamage.amount * (1.5 + 1.5*missileCount));
+            damage.amount = (int)Math.Round(procDamage.amount * (2 + missileCount));
             damage.source = procDamage.source;
             damage.type = DamageType.NORMAL;
             damage.procChance = procDamage.procChance * 0.75f;
@@ -54,21 +54,26 @@ public class Missile : ColliderEntity
         base.Init();
     }
 
-    public double getAngleToFace(Entity entity) {
+    public double getAngleToFace(Entity entity)
+    {
         Vector2 difference = entity.position - position;
         return Math.Atan2(difference.Y, difference.X);
     }
     public override void Update(GameTime gameTime)
     {
         base.Update(gameTime);
-        if (target != null) {
+        if (target != null)
+        {
             rotation = (float)getAngleToFace(target);
-        } else {
+        }
+        else
+        {
             rotation = baseRotation;
         }
 
         // check if target is alive
-        if (!EntityManager.entities.Contains(target)) {
+        if (!EntityManager.entities.Contains(target))
+        {
             target = null;
         }
 
